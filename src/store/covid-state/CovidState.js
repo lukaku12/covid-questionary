@@ -3,7 +3,11 @@ export default {
     return {
       had_covid: "",
       had_antibody_test: "",
-      antibodies: "",
+      covid_date: "",
+      antibodies: {
+        covid_date: "",
+        number: ""
+      },
       covid_state_is_valid: false,
     };
   },
@@ -14,8 +18,11 @@ export default {
     hadCovidTest(state) {
       return state.had_antibody_test;
     },
-    whenCovid(state) {
-      return state.antibodies;
+    covidDate(state) {
+      return state.covid_date;
+    },
+    antibodies(state) {
+      return state.antibodies
     },
     covidStateIsValid(state) {
       return state.covid_state_is_valid;
@@ -28,8 +35,14 @@ export default {
     updateHadCovidTest(state, payload) {
       state.had_antibody_test = payload;
     },
-    updateWhenCovid(state, payload) {
-      state.antibodies = payload;
+    updateCovidDate(state, payload) {
+      state.covid_date = payload;
+    },
+    updateAntibodies(state, payload) {
+      state.antibodies.covid_date = payload;
+    },
+    updateAntibodiesNumber(state, payload) {
+      state.antibodies.number = payload;
     },
     updateCovidStateIsValid(state, payload) {
       state.covid_state_is_valid = payload;

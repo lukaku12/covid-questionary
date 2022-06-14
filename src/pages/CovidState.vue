@@ -16,7 +16,7 @@
             :update-value="updateHadCovidValue"
           />
 
-          <input-radio
+          <input-radio v-if="hadCovidValue === 'yes'"
             question="ანტისხეულების ტესტი გაქვს გაკეთებული?*"
             name="antibodies_test"
             :options="[
@@ -27,15 +27,39 @@
             :update-value="updateHadCovidTestValue"
           />
 
-          <basic-input
+          <basic-input v-if="hadCovidValue === 'yes' && hadCovidTestValue === 'no'"
             question="მიუთითე მიახლოებითი პერიოდი (დღე/თვე/წელი) როდის გქონდა Covid-19*"
             type="date"
             name="had_covid_date"
+            placeholder="დდ/თთ/წწ"
             :value="whenCovidValue"
             :update-value="updateWhenCovidValue"
+            error-msg=""
+          />
+
+          <basic-input v-if="hadCovidValue === 'yes' && hadCovidTestValue === 'yes'"
+                       question="თუ გახსოვს, გთხოვ მიუთითე ტესტის მიახლოებითი რიცხვი და ანტისხეულების რაოდენობა*"
+                       type="date"
+                       name="had_covid_date"
+                       :value="antibodiesValue.covid_date"
+                       :update-value="updateAntibodiesCovidDateValue"
+                       error-msg=""
+          />
+          <basic-input v-if="hadCovidValue === 'yes' && hadCovidTestValue === 'yes'"
+                       question=""
+                       type="number"
+                       name="had_covid_date"
+                       placeholder="ანტისხეულების რაოდენობა"
+                       :value="antibodiesValue.number"
+                       :update-value="updateAntibodiesNumberValue"
+                       error-msg=""
           />
         </form>
-        <Navigation prev-page="question1" next-page="question3"></Navigation>
+        <Navigation
+          prev-page="question1"
+          next-page="question3"
+          :validate-form="validateForm"
+        ></Navigation>
       </div>
 
       <div>
@@ -63,7 +87,7 @@ export default {
     Layout,
     InputRadio,
     BasicInput,
-    Navigation,
+    Navigation
   },
   computed: {
     hadCovidValue() {
@@ -73,8 +97,11 @@ export default {
       return this.$store.getters.hadCovidTest;
     },
     whenCovidValue() {
-      return this.$store.getters.whenCovid;
+      return this.$store.getters.covidDate;
     },
+    antibodiesValue() {
+      return this.$store.getters.antibodies;
+    }
   },
   methods: {
     updateHadCovidValue(e) {
@@ -84,8 +111,17 @@ export default {
       this.$store.commit("updateHadCovidTest", e.target.value);
     },
     updateWhenCovidValue(e) {
-      this.$store.commit("updateWhenCovid", e.target.value);
+      this.$store.commit("updateCovidDate", e.target.value);
     },
-  },
+    updateAntibodiesCovidDateValue(e) {
+      this.$store.commit("updateAntibodies", e.target.value);
+    },
+    updateAntibodiesNumberValue(e) {
+      this.$store.commit("updateAntibodiesNumber", e.target.value);
+    },
+    validateForm() {
+
+    }
+  }
 };
 </script>

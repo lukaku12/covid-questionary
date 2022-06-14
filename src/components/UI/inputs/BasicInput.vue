@@ -6,6 +6,7 @@
       :type="type"
       :name="name"
       :value="value"
+      :placeholder="placeholder"
       @input="updateValue"
     />
     <span class="text-[#F15524]">
@@ -20,7 +21,7 @@ export default {
   props: {
     question: {
       type: String,
-      required: true,
+      required: false,
     },
     type: {
       type: String,
@@ -34,6 +35,10 @@ export default {
     value: {
       type: String,
       required: true,
+    },
+    placeholder: {
+      type: String,
+      required: false,
     },
     errorMsg: {
       type: String,
