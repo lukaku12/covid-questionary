@@ -1,15 +1,16 @@
 <template>
   <Layout>
-    <button @click="logResults">LOG</button>
     <CommonHeader page="4" />
-    <div class="flex justify-between font-helvetica">
-      <div class="max-w-lg">
-        რედბერის მთავარი ღირებულება ჩვენი გუნდის თითოეული წევრია. გარემო,
-        რომელსაც ჩვენი თანამშრომლები ქმნით, ბევრისთვის არის და ყოფილა წლების
-        განმავლობაში მიზნებისთვის ერთად ბრძოლის მიზეზი, ბევრისთვის კი — ჩვენთან
-        გადმოსვლის. პანდემიის პერიოდში ერთმანეთსაც იშვიათად ვნახულობთ პირისპირ
-        და ყოველდღიური კომუნიკაციაც გაიშვიათდა.
-        <form>
+    <div class="flex justify-between font-helvetica flex w-full md:h-[70vh]">
+      <div class="w-full md:w-1/2 overflow-auto">
+        <p>
+          რედბერის მთავარი ღირებულება ჩვენი გუნდის თითოეული წევრია. გარემო,
+          რომელსაც ჩვენი თანამშრომლები ქმნით, ბევრისთვის არის და ყოფილა წლების
+          განმავლობაში მიზნებისთვის ერთად ბრძოლის მიზეზი, ბევრისთვის კი — ჩვენთან
+          გადმოსვლის. <br> <br> პანდემიის პერიოდში ერთმანეთსაც იშვიათად ვნახულობთ პირისპირ
+          და ყოველდღიური კომუნიკაციაც გაიშვიათდა. <br> <br> <br>
+        </p>
+        <form class="w-full text-center md:text-left">
           <input-radio
             question="რა სიხშირით შეიძლება გვქონდეს საერთო არაფორმალური ონლაინ შეხვედრები, სადაც ყველა სურვილისამებრ ჩაერთვება?*"
             name="frequency"
@@ -55,10 +56,10 @@
         <Navigation
           prev-page="question3"
           next-page="thank-you"
-          :validate-form="logResults"
+          :validate-form=""
         ></Navigation>
       </div>
-      <section-image image="/img/scan-bike-boy.d730287b.png"></section-image>
+      <section-image :image="guyOnBike"></section-image>
     </div>
   </Layout>
 </template>
@@ -70,6 +71,8 @@ import InputRadio from "../components/UI/inputs/InputRadio.vue";
 import InputTextarea from "../components/UI/inputs/InputTextarea.vue";
 import Navigation from "@/components/layouts/Navigation";
 import SectionImage from "@/components/layouts/SectionImage";
+import guyOnBike from  '../assets/images/scan-bike-boy.png'
+
 
 export default {
   name: "CovidPolitic",
@@ -79,7 +82,12 @@ export default {
     Layout,
     InputRadio,
     InputTextarea,
-    Navigation,
+    Navigation
+  },
+  data() {
+    return {
+      guyOnBike: guyOnBike
+    }
   },
   computed: {
     nonFormalMeetingsValue() {
@@ -93,7 +101,7 @@ export default {
     },
     tellUsYourOpinionAboutUsValue() {
       return this.$store.getters.tellUsYourOpinionAboutUs;
-    },
+    }
   },
   methods: {
     updateNonFormalMeetingsValue(e) {
@@ -107,10 +115,7 @@ export default {
     },
     updateTellUsYourOpinionAboutUsValue(e) {
       this.$store.commit("updateTellUsYourOpinionAboutUs", e.target.value);
-    },
-    logResults() {
-      console.log(this.$store.state);
     }
-  },
+  }
 };
 </script>

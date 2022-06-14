@@ -1,9 +1,9 @@
 <template>
-  <div class="flex flex-col mb-12 max-w-lg">
+  <div class="flex flex-col mb-12 md:max-w-lg">
     <span class="font-bold text-xl mb-2">
       {{ question }}
     </span>
-    <div v-for="option in options" :key="option">
+    <div class="text-left ml-2" v-for="option in options" :key="option">
       <input
         type="radio"
         :id="option.value + name"

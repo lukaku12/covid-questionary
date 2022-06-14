@@ -1,9 +1,9 @@
 <template>
   <Layout>
     <CommonHeader page="2" />
-    <div class="flex justify-between font-helvetica">
-      <div>
-        <form>
+    <div class="flex justify-between font-helvetica flex w-full md:h-[70vh]">
+      <div class="w-full md:w-1/2 md:mt-10 overflow-auto">
+        <form class="w-full text-center md:text-left">
           <input-radio
             question="გაქვს გადატანილი Covid-19?*"
             name="had_covid"
@@ -61,14 +61,7 @@
           :validate-form="validateForm"
         ></Navigation>
       </div>
-
-      <div>
-        <img
-          class="max-w-xl"
-          src="../assets/images/scan-vaccinate.png"
-          alt="boy-and-girl"
-        />
-      </div>
+      <section-image :image="vaccine"></section-image>
     </div>
   </Layout>
 </template>
@@ -79,6 +72,8 @@ import Layout from "../components/layouts/Layout.vue";
 import InputRadio from "../components/UI/inputs/InputRadio.vue";
 import BasicInput from "../components/UI/inputs/BasicInput.vue";
 import Navigation from "@/components/layouts/Navigation";
+import SectionImage from "@/components/layouts/SectionImage";
+import vaccine from  '../assets/images/scan-vaccinate.png'
 
 export default {
   name: "CovidState",
@@ -87,7 +82,13 @@ export default {
     Layout,
     InputRadio,
     BasicInput,
-    Navigation
+    Navigation,
+    SectionImage
+  },
+  data() {
+    return {
+      vaccine: vaccine
+    }
   },
   computed: {
     hadCovidValue() {

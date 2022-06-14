@@ -1,5 +1,5 @@
 <template>
-  <header class="header mt-25 mb-10">
+  <header class="header mb-10 w-full">
     <div class="flex justify-between align-middle">
       <img src="../../assets/icons/redberry.svg" alt="redberry" />
       <span class="text-4xl text-[#232323] font-anonnymusPro font-bold">

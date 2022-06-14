@@ -1,9 +1,20 @@
 <template>
-  <div class="flex justify-center items-center flex-col h-screen">
-    <img src="../assets/images/logo.svg" alt="logo" />
-    <span class="text-3xl font-bold mt-25 text text-center">
-      <router-link :to="{ name: 'question1' }"> კითხვარის დაწყება </router-link>
-    </span>
+  <div class="intro">
+    <div class="carousel-inner">
+      <div class="item black"></div>
+    </div>
+    <div class="text">
+      <span>
+        <router-link :to="{ name: 'question1' }" class="button1">
+          <p class="buttonText">
+            <i>
+              კითხვარის <br />
+              დაწყება
+            </i>
+          </p>
+        </router-link>
+      </span>
+    </div>
   </div>
 </template>
 

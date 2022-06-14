@@ -1,9 +1,9 @@
 <template>
   <Layout>
     <CommonHeader page="1" />
-    <div class="flex justify-between font-helvetica">
-      <div>
-        <form>
+    <div class="flex justify-between font-helvetica flex w-full md:h-[60vh]">
+      <div class="w-full md:w-1/2 md:mt-10 ">
+        <form class="w-full text-center md:text-left">
           <basic-input
             question="სახელი*"
             type="text"
@@ -34,9 +34,7 @@
         </form>
         <small-footer text="*-ით მონიშნული ველების შევსება სავალდებულოა" />
       </div>
-      <div>
-        <img src="../assets/images/scan-boy-and-girl.png" alt="boy-and-girl" />
-      </div>
+      <section-image :image="image"></section-image>
     </div>
     <Navigation
       prev-page="start-question"
@@ -52,6 +50,8 @@ import Layout from "../components/layouts/Layout.vue";
 import BasicInput from "../components/UI/inputs/BasicInput.vue";
 import SmallFooter from "../components/UI/SmallFooter.vue";
 import Navigation from "@/components/layouts/Navigation";
+import SectionImage from "@/components/layouts/SectionImage";
+import scanBoyAndGirl from '../assets/images/scan-boy-and-girl.png'
 
 export default {
   name: "PersonalInformation",
@@ -60,10 +60,12 @@ export default {
     Layout,
     BasicInput,
     SmallFooter,
-    Navigation
+    Navigation,
+    SectionImage
   },
   data() {
     return {
+      image: scanBoyAndGirl,
       nameError: "",
       lastNameError: "",
       emailError: "",

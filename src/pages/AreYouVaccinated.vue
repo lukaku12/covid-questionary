@@ -1,9 +1,9 @@
 <template>
   <Layout>
     <CommonHeader page="3" />
-    <div class="flex justify-between font-helvetica">
-      <div>
-        <form>
+    <div class="flex justify-between font-helvetica flex w-full md:h-[70vh]">
+      <div class="w-full md:w-1/2 md:mt-10 overflow-auto">
+        <form class="w-full text-center md:text-left">
           <input-radio
             question="უკვე აცრილი ხარ?*"
             name="vaccinated"
@@ -95,13 +95,7 @@
         ></Navigation>
       </div>
 
-      <div>
-        <img
-          class="max-w-xl"
-          src="../assets/images/scan-doctor.png"
-          alt="boy-and-girl"
-        />
-      </div>
+      <section-image :image="doctor"></section-image>
     </div>
   </Layout>
 </template>
@@ -112,6 +106,8 @@ import Layout from "../components/layouts/Layout.vue";
 import InputRadio from "../components/UI/inputs/InputRadio.vue";
 import Navigation from "@/components/layouts/Navigation";
 import SmallFooter from "@/components/UI/SmallFooter";
+import SectionImage from "@/components/layouts/SectionImage";
+import doctor from  '../assets/images/scan-doctor.png'
 
 export default {
   name: "AreYouVaccinated",
@@ -121,6 +117,12 @@ export default {
     InputRadio,
     Navigation,
     SmallFooter,
+    SectionImage
+  },
+  data () {
+    return {
+      doctor: doctor
+    }
   },
   computed: {
     hadVaccineValue() {
