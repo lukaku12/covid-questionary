@@ -3,7 +3,7 @@ export default {
     return {
       had_vaccine: "",
       vaccination_stage: "",
-      vaccine_date: "",
+      what_are_you_waiting_for: "",
       vaccine_state_is_valid: false,
     };
   },
@@ -11,11 +11,11 @@ export default {
     hadVaccine(state) {
       return state.had_vaccine;
     },
-    whatAreYouWaiting(state) {
-      return state.vaccination_stage;
+    vaccinationStage (state) {
+      return state.vaccination_stage
     },
-    vaccineDate(state) {
-      return state.vaccine_date;
+    whatAreYouWaiting(state) {
+      return state.what_are_you_waiting_for;
     },
     vaccineStateIsValid(state) {
       return state.vaccine_state_is_valid;
@@ -25,11 +25,12 @@ export default {
     updateHadVaccine(state, payload) {
       state.had_vaccine = payload;
     },
-    updateWhatAreYouWaiting(state, payload) {
+    updateVaccinationStage(state, payload) {
       state.vaccination_stage = payload;
     },
-    updateVaccineDate(state, payload) {
-      state.vaccine_date = payload;
+    updateWhatAreYouWaiting(state, payload) {
+      console.log(payload);
+      state.what_are_you_waiting_for = payload;
     },
     updateVaccineStateIsValid(state, payload) {
       state.vaccine_state_is_valid = payload;

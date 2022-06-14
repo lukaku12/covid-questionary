@@ -12,43 +12,87 @@
               { text: 'არა', value: 'no' },
             ]"
             :selected-value="hadVaccineValue"
-            :update-value="updateVaccineValue"
+            :update-value="updateHadVaccineValue"
           />
+          <div v-if="hadVaccineValue === 'no'">
+            <input-radio
+              question="რას ელოდები?*"
+              name="waiting_for"
+              :options="[
+                {
+                  text: 'დარეგისტრირებული ვარ და ველოდები რიცხვს',
+                  value: 'vaccinating_date',
+                },
+                { text: 'არ ვგეგმავ', value: 'not_planning' },
+                {
+                  text: 'გადატანილი მაქვს და ვგეგმავ აცრას',
+                  value: 'already_had',
+                },
+              ]"
+              :selected-value="whatAreYouWaitingValue"
+              :update-value="updateWhatAreYouWaitingValue"
+            />
+            <small-footer
+              v-if="
+                hadVaccineValue === 'no' &&
+                whatAreYouWaitingValue === 'already_had'
+              "
+              text="ახალი პროტოკოლით კოვიდის გადატანიდან 1 თვის შემდეგ შეგიძლიათ ვაქცინის გაკეთება.
+                    </br></br>
+                    👉 რეგისტრაციის ბმული
+                    <a href='https://booking.moh.gov.ge/'>
+                        https://booking.moh.gov.ge/
+                    </a>
+            "
+            ></small-footer>
+            <small-footer
+              v-if="
+                hadVaccineValue === 'no' &&
+                whatAreYouWaitingValue === 'not_planning'
+              "
+              text="👉 <a href='https://booking.moh.gov.ge/'>https://booking.moh.gov.ge/</a>"
+            >
+            </small-footer>
+          </div>
 
-          <input-radio
-            question="რას ელოდები?*"
-            name="waiting_for"
-            :options="[
-              {
-                text: 'დარეგისტრირებული ვარ და ველოდები რიცხვს',
-                value: 'vaccinating_date',
-              },
-              { text: 'არ ვგეგმავ', value: 'not_planning' },
-              {
-                text: 'გადატანილი მაქვს და ვგეგმავ აცრას',
-                value: 'already_had',
-              },
-            ]"
-            :selected-value="whatAreYouWaitingValue"
-            :update-value="updateWhatAreYouWaitingValue"
-          />
-
-          <basic-input
-            question="მიუთითე მიახლოებითი პერიოდი (დღე/თვე/წელი) როდის გქონდა Covid-19*"
-            type="date"
-            name="planned_date"
-            :value="vaccineDateValue"
-            :update-value="updateVaccineDateValue"
-          />
+          <div v-if="hadVaccineValue === 'yes'">
+            <input-radio
+              question="აირჩიე რა ეტაპზე ხარ*"
+              name="choose_your_stage"
+              :options="[
+                {
+                  text: 'პირველი დოზა და დარეგისტრირებული ვარ მეორეზე',
+                  value: 'not_registered_for_second',
+                },
+                { text: 'სრულად აცრილი ვარ', value: 'fully_vaccinated' },
+                {
+                  text: 'პირველი დოზა და არ დავრეგისტრირებულვარ მეორეზე',
+                  value: 'registered_for_second',
+                },
+              ]"
+              :selected-value="vaccinationStageValue"
+              :update-value="updateVaccinationStageValue"
+            />
+            <small-footer
+              v-if="
+                hadVaccineValue === 'yes' &&
+                vaccinationStageValue === 'registered_for_second'
+              "
+              text="რომ არ გადადო, ბარემ ახლავე დარეგისტრირდი
+                    </br></br>
+                    👉 რეგისტრაციის ბმული
+                    <a href='https://booking.moh.gov.ge/'>
+                        https://booking.moh.gov.ge/
+                    </a>
+            "
+            ></small-footer>
+          </div>
         </form>
-
-        <div>
-          <span> 👉</span>
-          <a href="https://booking.moh.gov.ge/" class="text-[#1289AE]">
-            https://booking.moh.gov.ge/
-          </a>
-        </div>
-        <Navigation prev-page="question2" next-page="question4"></Navigation>
+        <Navigation
+          prev-page="question2"
+          next-page="question4"
+          :validate-form="validateForm"
+        ></Navigation>
       </div>
 
       <div>
@@ -66,8 +110,8 @@
 import CommonHeader from "../components/layouts/CommonHeader.vue";
 import Layout from "../components/layouts/Layout.vue";
 import InputRadio from "../components/UI/inputs/InputRadio.vue";
-import BasicInput from "../components/UI/inputs/BasicInput.vue";
 import Navigation from "@/components/layouts/Navigation";
+import SmallFooter from "@/components/UI/SmallFooter";
 
 export default {
   name: "AreYouVaccinated",
@@ -75,30 +119,31 @@ export default {
     CommonHeader,
     Layout,
     InputRadio,
-    BasicInput,
     Navigation,
+    SmallFooter,
   },
   computed: {
     hadVaccineValue() {
       return this.$store.getters.hadVaccine;
     },
+    vaccinationStageValue() {
+      return this.$store.getters.vaccinationStage;
+    },
     whatAreYouWaitingValue() {
       return this.$store.getters.whatAreYouWaiting;
     },
-    vaccineDateValue() {
-      return this.$store.getters.vaccineDate;
-    },
   },
   methods: {
-    updateVaccineValue(e) {
+    updateHadVaccineValue(e) {
       this.$store.commit("updateHadVaccine", e.target.value);
+    },
+    updateVaccinationStageValue(e) {
+      this.$store.commit("updateVaccinationStage", e.target.value);
     },
     updateWhatAreYouWaitingValue(e) {
       this.$store.commit("updateWhatAreYouWaiting", e.target.value);
     },
-    updateVaccineDateValue(e) {
-      this.$store.commit("updateVaccineDate", e.target.value);
-    },
+    validateForm() {},
   },
 };
 </script>

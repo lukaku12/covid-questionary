@@ -65,7 +65,7 @@
       <div>
         <img
           class="max-w-xl"
-          src="../assets/images/scan-boy-and-girl.png"
+          src="../assets/images/scan-vaccinate.png"
           alt="boy-and-girl"
         />
       </div>
