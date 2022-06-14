@@ -83,11 +83,11 @@ export default {
     InputRadio,
     BasicInput,
     Navigation,
-    SectionImage,
+    SectionImage
   },
   data() {
     return {
-      vaccine: vaccine,
+      vaccine: vaccine
     };
   },
   computed: {
@@ -105,7 +105,7 @@ export default {
     },
     covidStateIsValid() {
       return this.$store.getters.covidStateIsValid;
-    },
+    }
   },
   methods: {
     updateHadCovidValue(e) {
@@ -130,26 +130,29 @@ export default {
     },
 
     validateForm() {
+      console.log(this.hadCovidValue);
       if (this.hadCovidValue === "no" || this.hadCovidValue === "in_progress") {
         this.$store.commit("updateCovidStateIsValid", true);
-      } else {
+      }
+      if (this.hadCovidValue === "yes") {
         this.$store.commit("updateCovidStateIsValid", false);
-      }
-      if (this.hadAntibodyTestValue === "yes") {
-        if (this.antibodiesValue.covid_date === "" && this.antibodiesValue.number === "") {
-          this.$store.commit("updateCovidStateIsValid", false);
-        } else if(this.antibodiesValue.covid_date !== "" && this.antibodiesValue.number !== "" ) {
-          this.$store.commit("updateCovidStateIsValid", true);
+
+        if (this.hadAntibodyTestValue === "yes") {
+          if (this.antibodiesValue.covid_date === "" && this.antibodiesValue.number === "") {
+            this.$store.commit("updateCovidStateIsValid", false);
+          } else if (this.antibodiesValue.covid_date !== "" && this.antibodiesValue.number !== "") {
+            this.$store.commit("updateCovidStateIsValid", true);
+          }
+        }
+        if (this.hadAntibodyTestValue === "no") {
+          if (this.whenCovidValue === "") {
+            this.$store.commit("updateCovidStateIsValid", false);
+          } else {
+            this.$store.commit("updateCovidStateIsValid", true);
+          }
         }
       }
-      if (this.hadAntibodyTestValue === "no") {
-        if (this.whenCovidValue === "") {
-          this.$store.commit("updateCovidStateIsValid", false);
-        } else {
-          this.$store.commit("updateCovidStateIsValid", true);
-        }
-      }
-    },
-  },
+    }
+  }
 };
 </script>
