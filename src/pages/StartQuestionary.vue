@@ -10,5 +10,10 @@
 <script>
 export default {
   name: "StartQuestionary",
+  data() {
+    return {};
+  },
+  computed: {},
+  methods: {},
 };
 </script>
