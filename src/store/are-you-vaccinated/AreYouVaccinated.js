@@ -1,39 +1,38 @@
 export default {
   state() {
     return {
-      hadVaccine: "",
-      whatAreYouWaiting: "",
-      vaccineDate: "",
-      vaccineStateIsValid: false,
+      had_vaccine: "",
+      vaccination_stage: "",
+      vaccine_date: "",
+      vaccine_state_is_valid: false,
     };
   },
   getters: {
     hadVaccine(state) {
-      return state.hadVaccine;
+      return state.had_vaccine;
     },
     whatAreYouWaiting(state) {
-      return state.whatAreYouWaiting;
+      return state.vaccination_stage;
     },
     vaccineDate(state) {
-      return state.vaccineDate;
+      return state.vaccine_date;
     },
     vaccineStateIsValid(state) {
-      return state.vaccineStateIsValid;
+      return state.vaccine_state_is_valid;
     },
   },
   mutations: {
-    // page 3
     updateHadVaccine(state, payload) {
-      state.hadVaccine = payload;
+      state.had_vaccine = payload;
     },
     updateWhatAreYouWaiting(state, payload) {
-      state.whatAreYouWaiting = payload;
+      state.vaccination_stage = payload;
     },
     updateVaccineDate(state, payload) {
-      state.vaccineDate = payload;
+      state.vaccine_date = payload;
     },
     updateVaccineStateIsValid(state, payload) {
-      state.vaccineStateIsValid = payload;
+      state.vaccine_state_is_valid = payload;
     },
   },
 };

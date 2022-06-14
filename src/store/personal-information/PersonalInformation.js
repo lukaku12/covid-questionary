@@ -2,39 +2,38 @@ export default {
   state() {
     //page1
     return {
-      name: "",
-      lastName: "",
+      first_name: "",
+      last_name: "",
       email: "",
-      personalInfoIsValid: false,
+      personal_info_is_valid: false,
     }
   },
   getters: {
-    name(state) {
-      return state.name;
+    firstName(state) {
+      return state.first_name;
     },
     lastName(state) {
-      return state.lastName;
+      return state.last_name;
     },
     email(state) {
       return state.email;
     },
     personalInfoIsValid(state) {
-      return state.personalInfoIsValid;
+      return state.personal_info_is_valid;
     },
   },
   mutations: {
-    // page 1
-    updateName(state, payload) {
-      state.name = payload;
+    updateFirstName(state, payload) {
+      state.first_name = payload;
     },
     updateLastName(state, payload) {
-      state.lastName = payload;
+      state.last_name = payload;
     },
     updateEmail(state, payload) {
       state.email = payload;
     },
     updatePersonalInfoIsValid(state, payload) {
-      state.personalInfoIsValid = payload;
+      state.personal_info_is_valid = payload;
     },
   }
 

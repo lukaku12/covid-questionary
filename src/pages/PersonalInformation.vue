@@ -57,30 +57,30 @@ export default {
     Layout,
     BasicInput,
     SmallFooter,
-    Navigation,
+    Navigation
   },
   data() {
     return {
       nameError: "",
       lastNameError: "",
       emailError: "",
-      reg: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+      reg: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
     };
   },
   computed: {
     nameValue() {
-      return this.$store.getters.name;
+      return this.$store.getters.firstName;
     },
     lastNameValue() {
       return this.$store.getters.lastName;
     },
     emailValue() {
       return this.$store.getters.email;
-    },
+    }
   },
   methods: {
     updateNameValue(e) {
-      this.$store.commit("updateName", e.target.value);
+      this.$store.commit("updateFirstName", e.target.value);
     },
     updateLastNameValue(e) {
       this.$store.commit("updateLastName", e.target.value);
@@ -123,7 +123,7 @@ export default {
       ) {
         this.$store.commit("updatePersonalInfoIsValid", true);
       }
-    },
-  },
+    }
+  }
 };
 </script>
