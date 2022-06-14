@@ -1,7 +1,7 @@
 <template>
   <Layout>
     <CommonHeader page="4" />
-    <div class="flex justify-between font-helvetica flex w-full md:h-[70vh]">
+    <div class="flex justify-between font-helvetica flex w-full h-[70vh] md:h-[70vh]">
       <div class="w-full md:w-1/2 overflow-auto">
         <p>
           რედბერის მთავარი ღირებულება ჩვენი გუნდის თითოეული წევრია. გარემო,

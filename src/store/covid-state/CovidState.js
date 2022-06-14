@@ -15,7 +15,7 @@ export default {
     hadCovid(state) {
       return state.had_covid;
     },
-    hadCovidTest(state) {
+    hadAntibodyTest(state) {
       return state.had_antibody_test;
     },
     covidDate(state) {
@@ -32,7 +32,7 @@ export default {
     updateHadCovid(state, payload) {
       state.had_covid = payload;
     },
-    updateHadCovidTest(state, payload) {
+    updateHadAntibodyTest(state, payload) {
       state.had_antibody_test = payload;
     },
     updateCovidDate(state, payload) {
