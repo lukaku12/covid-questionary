@@ -106,7 +106,7 @@ import InputRadio from "../components/UI/inputs/InputRadio.vue";
 import Navigation from "@/components/layouts/Navigation";
 import SmallFooter from "@/components/UI/SmallFooter";
 import SectionImage from "@/components/layouts/SectionImage";
-import doctor from  '../assets/images/scan-doctor.png'
+import doctor from "../assets/images/scan-doctor.png";
 
 export default {
   name: "AreYouVaccinated",
@@ -118,10 +118,10 @@ export default {
     SmallFooter,
     SectionImage
   },
-  data () {
+  data() {
     return {
       doctor: doctor
-    }
+    };
   },
   computed: {
     hadVaccineValue() {
@@ -132,19 +132,39 @@ export default {
     },
     whatAreYouWaitingValue() {
       return this.$store.getters.whatAreYouWaiting;
-    },
+    }
   },
   methods: {
     updateHadVaccineValue(e) {
       this.$store.commit("updateHadVaccine", e.target.value);
+      this.validateForm()
     },
     updateVaccinationStageValue(e) {
       this.$store.commit("updateVaccinationStage", e.target.value);
+      this.validateForm()
     },
     updateWhatAreYouWaitingValue(e) {
       this.$store.commit("updateWhatAreYouWaiting", e.target.value);
+      this.validateForm()
     },
-    validateForm() {},
-  },
+    validateForm() {
+      if (this.hadVaccineValue === "yes") {
+        if (this.vaccinationStageValue !== "") {
+          this.$store.commit("updateVaccineStateIsValid", true);
+        }
+        if (this.vaccinationStageValue === "") {
+          this.$store.commit("updateVaccineStateIsValid", false);
+        }
+      }
+      if (this.hadVaccineValue === "no") {
+        if (this.whatAreYouWaitingValue !== "") {
+          this.$store.commit("updateVaccineStateIsValid", true);
+        }
+        if (this.whatAreYouWaitingValue === "") {
+          this.$store.commit("updateVaccineStateIsValid", false);
+        }
+      }
+    }
+  }
 };
 </script>

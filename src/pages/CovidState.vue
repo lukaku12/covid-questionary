@@ -130,7 +130,6 @@ export default {
     },
 
     validateForm() {
-      console.log(this.hadCovidValue);
       if (this.hadCovidValue === "no" || this.hadCovidValue === "in_progress") {
         this.$store.commit("updateCovidStateIsValid", true);
       }
