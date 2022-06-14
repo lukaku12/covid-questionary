@@ -41,7 +41,7 @@ export default {
       required: false,
     },
     errorMsg: {
-      type: String,
+      type: null,
       required: true,
     },
     updateValue: {

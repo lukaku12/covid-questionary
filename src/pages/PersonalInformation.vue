@@ -1,7 +1,7 @@
 <template>
   <Layout>
     <CommonHeader page="1" />
-    <div class="flex justify-between font-helvetica flex w-full md:h-[60vh]">
+    <div class="flex justify-between font-helvetica flex w-full md:h-[70vh]">
       <div class="w-full md:w-1/2 md:mt-10 ">
         <form class="w-full text-center md:text-left">
           <basic-input
@@ -39,7 +39,6 @@
     <Navigation
       prev-page="start-question"
       next-page="question2"
-      :validate-form="validateForm"
     ></Navigation>
   </Layout>
 </template>
@@ -51,7 +50,7 @@ import BasicInput from "../components/UI/inputs/BasicInput.vue";
 import SmallFooter from "../components/UI/SmallFooter.vue";
 import Navigation from "@/components/layouts/Navigation";
 import SectionImage from "@/components/layouts/SectionImage";
-import scanBoyAndGirl from '../assets/images/scan-boy-and-girl.png'
+import scanBoyAndGirl from "../assets/images/scan-boy-and-girl.png";
 
 export default {
   name: "PersonalInformation",
@@ -86,46 +85,58 @@ export default {
   methods: {
     updateNameValue(e) {
       this.$store.commit("updateFirstName", e.target.value);
+      setTimeout(this.validateFirstNameInput, 700)
+      ;
     },
     updateLastNameValue(e) {
       this.$store.commit("updateLastName", e.target.value);
+      setTimeout(this.validateLastNameInput, 700);
     },
     updateEmailValue(e) {
       this.$store.commit("updateEmail", e.target.value);
+      setTimeout(this.validateEmailInput, 700);
     },
-    validateForm() {
-      // validate name
+    validateFirstNameInput() {
       if (this.nameValue.length <= 3) {
         this.nameError = "სახელის ველი უნდა შედგებოდეს მინიმუმ 3 სიმბოლოსგან";
+        this.$store.commit("updatePersonalInfoIsValid", false);
       } else if (this.nameValue.length >= 255) {
-        this.nameError =
-          "სახელის ველი უნდა შედგებოდეს მაქსიმუმ 255 სიმბოლოსგან";
+        this.nameError = "სახელის ველი უნდა შედგებოდეს მაქსიმუმ 255 სიმბოლოსგან";
+        this.$store.commit("updatePersonalInfoIsValid", false);
       } else {
-        this.nameError = "";
+        this.nameError = null;
+        this.validateForm()
       }
-      // validate last name
+    },
+    validateLastNameInput() {
       if (this.lastNameValue.length <= 3) {
-        this.lastNameError =
-          "გვარის ველი უნდა შედგებოდეს მინიმუმ 3 სიმბოლოსგან";
+        this.lastNameError = "გვარის ველი უნდა შედგებოდეს მინიმუმ 3 სიმბოლოსგან";
+        this.$store.commit("updatePersonalInfoIsValid", false);
       } else if (this.lastNameValue.length >= 255) {
-        this.lastNameError =
-          "გვარის ველი უნდა შედგებოდეს მაქსიმუმ 255 სიმბოლოსგან";
+        this.lastNameError = "გვარის ველი უნდა შედგებოდეს მაქსიმუმ 255 სიმბოლოსგან";
+        this.$store.commit("updatePersonalInfoIsValid", false);
       } else {
-        this.lastNameError = "";
+        this.lastNameError = null;
       }
-      // validate email
+      this.validateForm()
+    },
+    validateEmailInput() {
       if (this.emailValue.length === 0) {
         this.emailError = "ემაილის ველი აუცილებელია";
+        this.$store.commit("updatePersonalInfoIsValid", false);
       } else if (!this.reg.test(this.emailValue)) {
         this.emailError = "თქვენ მიერ შეყვანილი მეილი არასწორია";
+        this.$store.commit("updatePersonalInfoIsValid", false);
+      } else if (!this.emailValue.includes("redberry.ge")) {
+        this.emailError = "გთხოვთ დარეგისტრირდეთ Redberry-ს მეილით (youremail@redberry.ge)";
+        this.$store.commit("updatePersonalInfoIsValid", false);
       } else {
-        this.emailError = "";
+        this.emailError = null;
+        this.validateForm()
       }
-      if (
-        this.nameError === "" &&
-        this.lastNameError === "" &&
-        this.emailError === ""
-      ) {
+    },
+    validateForm() {
+      if (this.nameError === null && this.lastNameError === null && this.emailError === null) {
         this.$store.commit("updatePersonalInfoIsValid", true);
       }
     }

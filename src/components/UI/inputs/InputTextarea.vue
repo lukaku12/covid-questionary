@@ -5,7 +5,7 @@
       :name="name"
       :value="value"
       @input="updateValue"
-      class="w-full h-24 border border-[#232323] bg-transparent pl-5 focus:outline-none"
+      class="w-full h-24 border border-[#232323] bg-transparent pl-5 focus:outline-none resize-none"
     ></textarea>
   </div>
 </template>

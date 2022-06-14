@@ -34,6 +34,7 @@ export default {
     },
     updatePersonalInfoIsValid(state, payload) {
       state.personal_info_is_valid = payload;
+      console.log(state.personal_info_is_valid);
     },
   }
 

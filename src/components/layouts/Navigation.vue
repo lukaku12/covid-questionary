@@ -1,31 +1,49 @@
 <template>
-  <div class="flex gap-4">
-    <router-link :to="{ name: prevPage }">
-      <button>Back</button>
-    </router-link>
-    <router-link :to="{ name: nextPage }">
-      <button @click="validateForm">Next</button>
-    </router-link>
+  <div class="flex gap-4 justify-center items-center my-10 w-full gap-6">
+    <button>
+      <router-link :to="{ name: prevPage }">
+        <img :src="arrowLeft" alt="">
+      </router-link>
+    </button>
+    <button :class="!this.goToNextPageIfInputsAreValid && 'opacity-40 pointer-events-none ease-in duration-300'">
+      <router-link :to="{ name: nextPage }">
+        <img :src="arrowRight" alt="">
+      </router-link>
+    </button>
   </div>
 </template>
 
 <script>
+import arrowLeft from "../../assets/icons/arrow-left.svg";
+import arrowRight from "../../assets/icons/arrow-right.svg";
+
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
   name: "Navigation",
   props: {
     prevPage: {
       type: String,
-      required: true,
+      required: true
     },
     nextPage: {
       type: String,
-      required: true,
-    },
-    validateForm: {
-      type: Function,
-      required: true,
+      required: true
     },
   },
+  data() {
+    return {
+      arrowLeft: arrowLeft,
+      arrowRight: arrowRight
+    };
+  },
+  computed: {
+    currentPage() {
+      return this.$route.path.replace("/questionary/", "");
+    },
+    goToNextPageIfInputsAreValid() {
+      return this.$store.getters.personalInfoIsValid && this.currentPage === "1";
+    }
+  }
+
 };
 </script>

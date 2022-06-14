@@ -88,15 +88,14 @@
             ></small-footer>
           </div>
         </form>
-        <Navigation
-          prev-page="question2"
-          next-page="question4"
-          :validate-form="validateForm"
-        ></Navigation>
       </div>
-
       <section-image :image="doctor"></section-image>
     </div>
+    <Navigation
+      prev-page="question2"
+      next-page="question4"
+      :validate-form="validateForm"
+    ></Navigation>
   </Layout>
 </template>
 

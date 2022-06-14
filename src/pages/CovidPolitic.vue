@@ -53,14 +53,14 @@
             :update-value="updateTellUsYourOpinionAboutUsValue"
           />
         </form>
-        <Navigation
-          prev-page="question3"
-          next-page="thank-you"
-          :validate-form=""
-        ></Navigation>
       </div>
       <section-image :image="guyOnBike"></section-image>
     </div>
+    <Navigation
+      prev-page="question3"
+      next-page="thank-you"
+      :validate-form="validateForm"
+    ></Navigation>
   </Layout>
 </template>
 
@@ -115,6 +115,9 @@ export default {
     },
     updateTellUsYourOpinionAboutUsValue(e) {
       this.$store.commit("updateTellUsYourOpinionAboutUs", e.target.value);
+    },
+    validateForm () {
+
     }
   }
 };

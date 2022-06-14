@@ -17,24 +17,24 @@
           />
 
           <input-radio v-if="hadCovidValue === 'yes'"
-            question="ანტისხეულების ტესტი გაქვს გაკეთებული?*"
-            name="antibodies_test"
-            :options="[
+                       question="ანტისხეულების ტესტი გაქვს გაკეთებული?*"
+                       name="antibodies_test"
+                       :options="[
               { text: 'კი', value: 'yes' },
               { text: 'არა', value: 'no' },
             ]"
-            :selected-value="hadCovidTestValue"
-            :update-value="updateHadCovidTestValue"
+                       :selected-value="hadCovidTestValue"
+                       :update-value="updateHadCovidTestValue"
           />
 
           <basic-input v-if="hadCovidValue === 'yes' && hadCovidTestValue === 'no'"
-            question="მიუთითე მიახლოებითი პერიოდი (დღე/თვე/წელი) როდის გქონდა Covid-19*"
-            type="date"
-            name="had_covid_date"
-            placeholder="დდ/თთ/წწ"
-            :value="whenCovidValue"
-            :update-value="updateWhenCovidValue"
-            error-msg=""
+                       question="მიუთითე მიახლოებითი პერიოდი (დღე/თვე/წელი) როდის გქონდა Covid-19*"
+                       type="date"
+                       name="had_covid_date"
+                       placeholder="დდ/თთ/წწ"
+                       :value="whenCovidValue"
+                       :update-value="updateWhenCovidValue"
+                       error-msg=""
           />
 
           <basic-input v-if="hadCovidValue === 'yes' && hadCovidTestValue === 'yes'"
@@ -55,14 +55,14 @@
                        error-msg=""
           />
         </form>
-        <Navigation
-          prev-page="question1"
-          next-page="question3"
-          :validate-form="validateForm"
-        ></Navigation>
       </div>
       <section-image :image="vaccine"></section-image>
     </div>
+    <Navigation
+      prev-page="question1"
+      next-page="question3"
+      :validate-form="validateForm"
+    ></Navigation>
   </Layout>
 </template>
 
@@ -73,7 +73,7 @@ import InputRadio from "../components/UI/inputs/InputRadio.vue";
 import BasicInput from "../components/UI/inputs/BasicInput.vue";
 import Navigation from "@/components/layouts/Navigation";
 import SectionImage from "@/components/layouts/SectionImage";
-import vaccine from  '../assets/images/scan-vaccinate.png'
+import vaccine from "../assets/images/scan-vaccinate.png";
 
 export default {
   name: "CovidState",
@@ -88,7 +88,7 @@ export default {
   data() {
     return {
       vaccine: vaccine
-    }
+    };
   },
   computed: {
     hadCovidValue() {
