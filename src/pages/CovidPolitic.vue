@@ -1,5 +1,6 @@
 <template>
   <Layout>
+    <button @click="logResults">LOG</button>
     <CommonHeader page="4" />
     <div class="flex justify-between font-helvetica">
       <div class="max-w-lg">
@@ -16,10 +17,10 @@
               { text: 'კვირაში ორჯერ', value: 'twice_per_week' },
               { text: 'კვირაში ერთხელ', value: 'once_per_week' },
               { text: 'ორ კვირაში ერთხელ', value: 'once_per_two_weeks' },
-              { text: 'ორ კვირაში ერთხელ', value: 'once_per_month' },
+              { text: 'თვეში ერთხელ', value: 'once_per_month' },
             ]"
-            :selected-value="onlineMeetingsValue"
-            :update-value="updateOnlineMeetingsValue"
+            :selected-value="nonFormalMeetingsValue"
+            :update-value="updateNonFormalMeetingsValue"
           />
 
           <input-radio
@@ -33,37 +34,31 @@
               { text: 4, value: 4 },
               { text: 5, value: 5 },
             ]"
-            :selected-value="fromOfficeValue"
-            :update-value="updateFromOfficeValue"
+            :selected-value="numberOfDaysFromOfficeValue"
+            :update-value="updateNumberOfDaysFromOfficeValue"
           />
 
           <input-textarea
             question="რას ფიქრობ ფიზიკურ შეკრებებზე?"
             name="gatherings"
+            :value="whatAboutMeetingsInLiveValue"
+            :update-value="updateWhatAboutMeetingsInLiveValue"
           />
 
           <input-textarea
             question="რას ფიქრობ არსებულ გარემოზე:<br />რა მოგწონს, რას დაამატებდი, რას შეცვლიდი?"
             name="environment"
+            :value="tellUsYourOpinionAboutUsValue"
+            :update-value="updateTellUsYourOpinionAboutUsValue"
           />
         </form>
-
-        <div>
-          <span> 👉</span>
-          <a href="https://booking.moh.gov.ge/" class="text-[#1289AE]">
-            https://booking.moh.gov.ge/
-          </a>
-        </div>
-        <Navigation prev-page="question3" next-page="thank-you"></Navigation>
+        <Navigation
+          prev-page="question3"
+          next-page="thank-you"
+          :validate-form="logResults"
+        ></Navigation>
       </div>
-
-      <div>
-        <img
-          class="max-w-xl"
-          src="../assets/images/scan-bike-boy.png"
-          alt="boy-and-girl"
-        />
-      </div>
+      <section-image image="/img/scan-bike-boy.d730287b.png"></section-image>
     </div>
   </Layout>
 </template>
@@ -74,10 +69,12 @@ import Layout from "../components/layouts/Layout.vue";
 import InputRadio from "../components/UI/inputs/InputRadio.vue";
 import InputTextarea from "../components/UI/inputs/InputTextarea.vue";
 import Navigation from "@/components/layouts/Navigation";
+import SectionImage from "@/components/layouts/SectionImage";
 
 export default {
   name: "CovidPolitic",
   components: {
+    SectionImage,
     CommonHeader,
     Layout,
     InputRadio,
@@ -85,20 +82,35 @@ export default {
     Navigation,
   },
   computed: {
-    onlineMeetingsValue() {
-      return this.$store.getters.hadCovid;
+    nonFormalMeetingsValue() {
+      return this.$store.getters.nonFormalMeetings;
     },
-    fromOfficeValue() {
-      return this.$store.getters.hadCovidTest;
+    numberOfDaysFromOfficeValue() {
+      return this.$store.getters.numberOfDaysFromOffice;
+    },
+    whatAboutMeetingsInLiveValue() {
+      return this.$store.getters.whatAboutMeetingsInLive;
+    },
+    tellUsYourOpinionAboutUsValue() {
+      return this.$store.getters.tellUsYourOpinionAboutUs;
     },
   },
   methods: {
-    updateOnlineMeetingsValue(e) {
-      this.$store.commit("updateOnlineMeetings", e.target.value);
+    updateNonFormalMeetingsValue(e) {
+      this.$store.commit("updateNonFormalMeetings", e.target.value);
     },
-    updateFromOfficeValue(e) {
-      this.$store.commit("updateFromOffice", e.target.value);
+    updateNumberOfDaysFromOfficeValue(e) {
+      this.$store.commit("updateNumberOfDaysFromOffice", e.target.value);
     },
+    updateWhatAboutMeetingsInLiveValue(e) {
+      this.$store.commit("updateWhatAboutMeetingsInLive", e.target.value);
+    },
+    updateTellUsYourOpinionAboutUsValue(e) {
+      this.$store.commit("updateTellUsYourOpinionAboutUs", e.target.value);
+    },
+    logResults() {
+      console.log(this.$store.state);
+    }
   },
 };
 </script>

@@ -1,17 +1,18 @@
 <template>
   <div class="flex flex-col mb-12 max-w-lg">
-    <label :for="name" class="font-bold text-xl mb-2">
+    <span class="font-bold text-xl mb-2">
       {{ question }}
-    </label>
+    </span>
     <div v-for="option in options" :key="option">
       <input
         type="radio"
+        :id="option.value + name"
         :name="name"
         :value="option.value"
         :checked="option.value === selectedValue"
         @input="updateValue"
       />
-      <span class="ml-5 font-normal text-xl">{{ option.text }}</span>
+      <label :for="option.value + name" class="ml-5 font-normal text-xl">{{ option.text }}</label>
     </div>
   </div>
 </template>

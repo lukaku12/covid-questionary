@@ -29,7 +29,6 @@ export default {
       state.vaccination_stage = payload;
     },
     updateWhatAreYouWaiting(state, payload) {
-      console.log(payload);
       state.what_are_you_waiting_for = payload;
     },
     updateVaccineStateIsValid(state, payload) {
