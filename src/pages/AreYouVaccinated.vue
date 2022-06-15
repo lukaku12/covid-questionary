@@ -21,12 +21,12 @@
               :options="[
                 {
                   text: 'დარეგისტრირებული ვარ და ველოდები რიცხვს',
-                  value: 'vaccinating_date',
+                  value: 'registered_and_waiting',
                 },
                 { text: 'არ ვგეგმავ', value: 'not_planning' },
                 {
                   text: 'გადატანილი მაქვს და ვგეგმავ აცრას',
-                  value: 'already_had',
+                  value: 'had_covid_and_planning_to_be_vaccinated',
                 },
               ]"
               :selected-value="whatAreYouWaitingValue"
@@ -62,12 +62,12 @@
               :options="[
                 {
                   text: 'პირველი დოზა და დარეგისტრირებული ვარ მეორეზე',
-                  value: 'not_registered_for_second',
+                  value: 'first_dosage_and_registered_on_the_second',
                 },
                 { text: 'სრულად აცრილი ვარ', value: 'fully_vaccinated' },
                 {
                   text: 'პირველი დოზა და არ დავრეგისტრირებულვარ მეორეზე',
-                  value: 'registered_for_second',
+                  value: 'first_dosage_and_not_registered_yet',
                 },
               ]"
               :selected-value="vaccinationStageValue"

@@ -17,8 +17,8 @@
             :options="[
               { text: 'კვირაში ორჯერ', value: 'twice_a_week' },
               { text: 'კვირაში ერთხელ', value: 'once_a_week' },
-              { text: 'ორ კვირაში ერთხელ', value: 'once_a_two_weeks' },
-              { text: 'თვეში ერთხელ', value: 'once_a_month' },
+              { text: 'ორ კვირაში ერთხელ', value: 'once_in_a_two_weeks' },
+              { text: 'თვეში ერთხელ', value: 'once_in_a_month' },
             ]"
             :selected-value="nonFormalMeetingsValue"
             :update-value="updateNonFormalMeetingsValue"
