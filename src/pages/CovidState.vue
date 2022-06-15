@@ -10,7 +10,7 @@
             :options="[
               { text: 'კი', value: 'yes' },
               { text: 'არა', value: 'no' },
-              { text: 'ახლა მაქვს', value: 'in_progress' },
+              { text: 'ახლა მაქვს', value: 'have_right_now' },
             ]"
             :selected-value="hadCovidValue"
             :update-value="updateHadCovidValue"

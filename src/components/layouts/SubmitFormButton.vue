@@ -54,7 +54,6 @@ export default {
         ...(state.CovidPolitic.what_about_meetings_in_live !== "" && { what_about_meetings_in_live: state.CovidPolitic.what_about_meetings_in_live }),
         ...(state.CovidPolitic.tell_us_your_opinion_about_us !== "" && { tell_us_your_opinion_about_us: state.CovidPolitic.tell_us_your_opinion_about_us })
       };
-
       async function postData(url = "", data = {}) {
         return await fetch(url, {
           method: "POST",
