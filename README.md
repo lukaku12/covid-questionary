@@ -43,7 +43,7 @@ git clone https://github.com/RedberryInternship/covid-questionary-luka-kurdadze.
 npm install
 ```
 
-3\. after you have installed all vuex, for State Management:
+3\. after that install vuex, for State Management:
 ```sh
 npm install vuex@next --save
 ```
