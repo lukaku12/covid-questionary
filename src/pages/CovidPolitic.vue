@@ -2,7 +2,7 @@
   <Layout>
     <CommonHeader page="4" />
     <div class="flex justify-between font-helvetica flex w-full h-[70vh] md:h-[70vh]">
-      <div class="w-full md:w-1/2 overflow-auto">
+      <div class="w-full md:w-1/2 overflow-auto relative">
         <p>
           რედბერის მთავარი ღირებულება ჩვენი გუნდის თითოეული წევრია. გარემო,
           რომელსაც ჩვენი თანამშრომლები ქმნით, ბევრისთვის არის და ყოფილა წლების
@@ -15,10 +15,10 @@
             question="რა სიხშირით შეიძლება გვქონდეს საერთო არაფორმალური ონლაინ შეხვედრები, სადაც ყველა სურვილისამებრ ჩაერთვება?*"
             name="frequency"
             :options="[
-              { text: 'კვირაში ორჯერ', value: 'twice_per_week' },
-              { text: 'კვირაში ერთხელ', value: 'once_per_week' },
-              { text: 'ორ კვირაში ერთხელ', value: 'once_per_two_weeks' },
-              { text: 'თვეში ერთხელ', value: 'once_per_month' },
+              { text: 'კვირაში ორჯერ', value: 'twice_a_week' },
+              { text: 'კვირაში ერთხელ', value: 'once_a_week' },
+              { text: 'ორ კვირაში ერთხელ', value: 'once_a_two_weeks' },
+              { text: 'თვეში ერთხელ', value: 'once_a_month' },
             ]"
             :selected-value="nonFormalMeetingsValue"
             :update-value="updateNonFormalMeetingsValue"
@@ -28,12 +28,12 @@
             question="კვირაში რამდენი დღე ისურვებდი ოფისიდან მუშაობას?*"
             name="from_office"
             :options="[
-              { text: 0, value: 0 },
-              { text: 1, value: 1 },
-              { text: 2, value: 2 },
-              { text: 3, value: 3 },
-              { text: 4, value: 4 },
-              { text: 5, value: 5 },
+              { text: 0, value: '0' },
+              { text: 1, value: '1' },
+              { text: 2, value: '2' },
+              { text: 3, value: '3' },
+              { text: 4, value: '4' },
+              { text: 5, value: '5' },
             ]"
             :selected-value="numberOfDaysFromOfficeValue"
             :update-value="updateNumberOfDaysFromOfficeValue"
@@ -52,6 +52,7 @@
             :value="tellUsYourOpinionAboutUsValue"
             :update-value="updateTellUsYourOpinionAboutUsValue"
           />
+        <SubmitFormButton></SubmitFormButton>
         </form>
       </div>
       <section-image :image="guyOnBike"></section-image>
@@ -72,6 +73,7 @@ import InputTextarea from "../components/UI/inputs/InputTextarea.vue";
 import Navigation from "@/components/layouts/Navigation";
 import SectionImage from "@/components/layouts/SectionImage";
 import guyOnBike from  '../assets/images/scan-bike-boy.png'
+import SubmitFormButton from "@/components/layouts/SubmitFormButton";
 
 
 export default {
@@ -82,7 +84,8 @@ export default {
     Layout,
     InputRadio,
     InputTextarea,
-    Navigation
+    Navigation,
+    SubmitFormButton
   },
   data() {
     return {
@@ -106,9 +109,11 @@ export default {
   methods: {
     updateNonFormalMeetingsValue(e) {
       this.$store.commit("updateNonFormalMeetings", e.target.value);
+      this.validateForm()
     },
     updateNumberOfDaysFromOfficeValue(e) {
       this.$store.commit("updateNumberOfDaysFromOffice", e.target.value);
+      this.validateForm()
     },
     updateWhatAboutMeetingsInLiveValue(e) {
       this.$store.commit("updateWhatAboutMeetingsInLive", e.target.value);
@@ -117,7 +122,12 @@ export default {
       this.$store.commit("updateTellUsYourOpinionAboutUs", e.target.value);
     },
     validateForm () {
-
+      if(this.nonFormalMeetingsValue === '' && this.numberOfDaysFromOfficeValue === ''){
+        this.$store.commit("updateCovidPoliticIsValid", false);
+      }
+      if(this.nonFormalMeetingsValue !== '' && this.numberOfDaysFromOfficeValue !== ''){
+        this.$store.commit("updateCovidPoliticIsValid", true);
+      }
     }
   }
 };

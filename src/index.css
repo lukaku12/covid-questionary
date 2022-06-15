@@ -191,7 +191,7 @@ body {
   opacity: 70%;
   width: 30%;
   height: 25%;
-  animation: heartAnimation 0.6s ease-out;
+  ;
 }
 @keyframes heartAnimation{
   from {
@@ -202,7 +202,59 @@ body {
     left: 6%;
   }
 }
-/* width */
+/*thank you page*/
+.text1{
+  animation: thank-you 1s;
+  letter-spacing: 30px;
+}
+@keyframes thank-you {
+  0%{
+    color: #232323;
+  }
+  30%{
+    letter-spacing: 60px;
+  }
+  100%{
+    letter-spacing: 30px;
+  }
+}
+.left-star{
+  width: 52px;
+  height: 52px;
+  left: 50px;
+  top: 0;
+  opacity: 0;
+  animation: starUp 1s forwards;
+  animation-delay: 1s;
+}
+.right-star {
+  width: 33px;
+  height: 33px;
+  right: 50px;
+  bottom: 0;
+  opacity: 0;
+  animation: starDown 1s forwards;
+  animation-delay: 1s;
+}
+@keyframes starUp {
+  from {
+    opacity: 0;
+  }
+  to{
+    top: -80px;
+    opacity: 1;
+  }
+}
+@keyframes starDown {
+  from {
+    opacity: 0;
+  }
+  to{
+    bottom: -40px;
+    opacity: 1;
+  }
+}
+/* CUSTOM SCROLLBAR*/
 ::-webkit-scrollbar {
   width: 7px;
 }
