@@ -254,6 +254,19 @@ body {
     opacity: 1;
   }
 }
+.appearAnimation{
+  animation: inputPopUp 500ms ease-out;
+}
+@keyframes inputPopUp {
+  from {
+    margin-top: -10px;
+    opacity: 0;
+  }
+  to{
+    margin-top: 0;
+    opacity: 1;
+  }
+}
 /* CUSTOM SCROLLBAR*/
 ::-webkit-scrollbar {
   width: 7px;

@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col mb-12 md:max-w-lg">
+  <div class="flex flex-col mb-12 md:max-w-lg appearAnimation">
     <span class="font-bold text-xl mb-2">
       {{ question }}
     </span>

@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col mb-12 max-w-lg">
+  <div class="flex flex-col mb-12 max-w-lg appearAnimation">
     <label for="date" class="font-bold text-xl mb-2" v-html="question"></label>
     <textarea
       :name="name"
