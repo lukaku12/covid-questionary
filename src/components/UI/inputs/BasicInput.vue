@@ -27,6 +27,7 @@ export default {
     question: {
       type: String,
       required: false,
+      default: '',
     },
     type: {
       type: String,
@@ -44,6 +45,7 @@ export default {
     placeholder: {
       type: String,
       required: false,
+      default: '',
     },
     updateValue: {
       type: Function,
@@ -52,6 +54,7 @@ export default {
     rules: {
       type: String,
       required: false,
+      default: '',
     },
   },
 };
