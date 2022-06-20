@@ -1,11 +1,11 @@
 import { createRouter, createWebHistory } from "vue-router";
 
-import AreYouVaccinated from "./pages/AreYouVaccinated.vue";
-import CovidPolitic from "./pages/CovidPolitic.vue";
-import CovidState from "./pages/CovidState.vue";
-import PersonalInformation from "./pages/PersonalInformation.vue";
-import StartQuestionary from "./pages/StartQuestionary.vue";
-import ThankYou from "./pages/ThankYou.vue";
+import AreYouVaccinated from "../pages/AreYouVaccinated.vue";
+import CovidPolitic from "../pages/CovidPolitic.vue";
+import CovidState from "../pages/CovidState.vue";
+import PersonalInformation from "../pages/PersonalInformation.vue";
+import StartQuestionary from "../pages/StartQuestionary.vue";
+import ThankYou from "../pages/ThankYou.vue";
 
 const router = createRouter({
   history: createWebHistory(),

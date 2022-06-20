@@ -51,7 +51,7 @@ export default {
     },
     rules: {
       type: String,
-      required: true,
+      required: false,
     }
   },
 };
