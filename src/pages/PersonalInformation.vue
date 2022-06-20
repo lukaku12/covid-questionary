@@ -41,13 +41,13 @@
 </template>
 
 <script>
-import CommonHeader from "../components/layouts/CommonHeader.vue";
-import Layout from "../components/layouts/Layout.vue";
-import BasicInput from "../components/UI/inputs/BasicInput.vue";
-import SmallFooter from "../components/UI/SmallFooter.vue";
+import CommonHeader from "@/components/layouts/CommonHeader.vue";
+import Layout from "@/components/layouts/Layout.vue";
+import BasicInput from "@/components/UI/inputs/BasicInput.vue";
+import SmallFooter from "@/components/UI/SmallFooter.vue";
 import Navigation from "@/components/layouts/Navigation";
 import SectionImage from "@/components/layouts/SectionImage";
-import scanBoyAndGirl from "../assets/images/scan-boy-and-girl.png";
+import scanBoyAndGirl from "@/assets/images/scan-boy-and-girl.png";
 import { Form } from "vee-validate";
 
 export default {

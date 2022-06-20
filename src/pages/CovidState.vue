@@ -67,13 +67,13 @@
 </template>
 
 <script>
-import CommonHeader from "../components/layouts/CommonHeader.vue";
-import Layout from "../components/layouts/Layout.vue";
-import InputRadio from "../components/UI/inputs/InputRadio.vue";
-import BasicInput from "../components/UI/inputs/BasicInput.vue";
+import CommonHeader from "@/components/layouts/CommonHeader.vue";
+import Layout from "@/components/layouts/Layout.vue";
+import InputRadio from "@/components/UI/inputs/InputRadio.vue";
+import BasicInput from "@/components/UI/inputs/BasicInput.vue";
 import Navigation from "@/components/layouts/Navigation";
 import SectionImage from "@/components/layouts/SectionImage";
-import vaccine from "../assets/images/scan-vaccinate.png";
+import vaccine from "@/assets/images/scan-vaccinate.png";
 
 export default {
   name: "CovidState",

@@ -100,13 +100,13 @@
 </template>
 
 <script>
-import CommonHeader from "../components/layouts/CommonHeader.vue";
-import Layout from "../components/layouts/Layout.vue";
-import InputRadio from "../components/UI/inputs/InputRadio.vue";
+import CommonHeader from "@/components/layouts/CommonHeader.vue";
+import Layout from "@/components/layouts/Layout.vue";
+import InputRadio from "@/components/UI/inputs/InputRadio.vue";
 import Navigation from "@/components/layouts/Navigation";
 import SmallFooter from "@/components/UI/SmallFooter";
 import SectionImage from "@/components/layouts/SectionImage";
-import doctor from "../assets/images/scan-doctor.png";
+import doctor from "@/assets/images/scan-doctor.png";
 
 export default {
   name: "AreYouVaccinated",

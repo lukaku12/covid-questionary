@@ -36,10 +36,10 @@
   </div>
 </template>
 <script>
-import rectangle from "../../assets/images/rectangle.png";
-import circle from "../../assets/images/red-ball.png";
-import star from "../../assets/images/star.png";
-import heard from "../../assets/images/heart.png";
+import rectangle from "@/assets/images/rectangle.png";
+import circle from "@/assets/images/red-ball.png";
+import star from "@/assets/images/star.png";
+import heard from "@/assets/images/heart.png";
 
 export default {
   name: "SectionImage",

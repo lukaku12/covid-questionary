@@ -1,7 +1,7 @@
 <template>
   <header class="header mb-10 w-full">
     <div class="flex justify-between align-middle">
-      <img src="../../assets/icons/redberry.svg" alt="redberry" />
+      <img src="@/assets/icons/redberry.svg" alt="redberry" />
       <div>
         <span
           class="text-4xl text-[#232323] font-anonnymusPro font-bold appearAnimation"

@@ -72,13 +72,13 @@
 </template>
 
 <script>
-import CommonHeader from "../components/layouts/CommonHeader.vue";
-import Layout from "../components/layouts/Layout.vue";
-import InputRadio from "../components/UI/inputs/InputRadio.vue";
-import InputTextarea from "../components/UI/inputs/InputTextarea.vue";
+import CommonHeader from "@/components/layouts/CommonHeader.vue";
+import Layout from "@/components/layouts/Layout.vue";
+import InputRadio from "@/components/UI/inputs/InputRadio.vue";
+import InputTextarea from "@/components/UI/inputs/InputTextarea.vue";
 import Navigation from "@/components/layouts/Navigation";
 import SectionImage from "@/components/layouts/SectionImage";
-import guyOnBike from "../assets/images/scan-bike-boy.png";
+import guyOnBike from "@/assets/images/scan-bike-boy.png";
 import SubmitFormButton from "@/components/layouts/SubmitFormButton";
 
 export default {
