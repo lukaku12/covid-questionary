@@ -1,7 +1,7 @@
 <template>
   <Layout>
     <CommonHeader page="3" />
-    <div class="flex justify-between font-helvetica flex w-full md:h-[70vh]">
+    <div class="flex justify-between font-helvetica w-full md:h-[70vh]">
       <div class="w-full md:w-1/2 md:mt-10 overflow-auto">
         <form class="w-full text-center md:text-left">
           <input-radio
