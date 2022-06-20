@@ -14,11 +14,7 @@
 </template>
 
 <script>
-import arrowLeft from "../../assets/icons/arrow-left.svg";
-import arrowRight from "../../assets/icons/arrow-right.svg";
-
 export default {
-  // eslint-disable-next-line vue/multi-word-component-names
   name: "Navigation",
   props: {
     prevPage: {
@@ -29,12 +25,6 @@ export default {
       type: String,
       required: true
     },
-  },
-  data() {
-    return {
-      arrowLeft: arrowLeft,
-      arrowRight: arrowRight
-    };
   },
   computed: {
     currentPage() {
