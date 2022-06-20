@@ -15,29 +15,29 @@ const router = createRouter({
       path: "/questionary/1",
       component: PersonalInformation,
       name: "question1",
-      props: { myClass: "rectangle" }
+      props: { myClass: "rectangle" },
     },
     {
       path: "/questionary/2",
       component: CovidState,
       name: "question2",
-      props: { myClass: "red-ball" }
+      props: { myClass: "red-ball" },
     },
     {
       path: "/questionary/3",
       component: AreYouVaccinated,
       name: "question3",
-      props: { myClass: "star" }
+      props: { myClass: "star" },
     },
     {
       path: "/questionary/4",
       component: CovidPolitic,
       name: "question4",
-      props: { myClass: "heart" }
+      props: { myClass: "heart" },
     },
     { path: "/thank-you", component: ThankYou, name: "thank-you" },
-    { path: "/:notFound(.*)", redirect: "/" }
-  ]
+    { path: "/:notFound(.*)", redirect: "/" },
+  ],
 });
 
 export default router;

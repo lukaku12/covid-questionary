@@ -5,10 +5,34 @@
       :src="image"
       alt="boy-and-girl"
     />
-    <img v-if="animationClass === 'rectangle'" class="-z-10" :class="animationClass" :src="rectangle" :alt="animationClass">
-    <img v-if="animationClass === 'red-ball'" class="-z-10" :class="animationClass" :src="circle" :alt="animationClass">
-    <img v-if="animationClass === 'star'" class="-z-10" :class="animationClass" :src="star" :alt="animationClass">
-    <img v-if="animationClass === 'heart'" class="-z-10" :class="animationClass" :src="heard" :alt="animationClass">
+    <img
+      v-if="animationClass === 'rectangle'"
+      class="-z-10"
+      :class="animationClass"
+      :src="rectangle"
+      :alt="animationClass"
+    />
+    <img
+      v-if="animationClass === 'red-ball'"
+      class="-z-10"
+      :class="animationClass"
+      :src="circle"
+      :alt="animationClass"
+    />
+    <img
+      v-if="animationClass === 'star'"
+      class="-z-10"
+      :class="animationClass"
+      :src="star"
+      :alt="animationClass"
+    />
+    <img
+      v-if="animationClass === 'heart'"
+      class="-z-10"
+      :class="animationClass"
+      :src="heard"
+      :alt="animationClass"
+    />
   </div>
 </template>
 <script>
@@ -22,8 +46,8 @@ export default {
   props: {
     image: {
       type: String,
-      required: true
-    }
+      required: true,
+    },
   },
   data() {
     return {
@@ -31,14 +55,12 @@ export default {
       circle: circle,
       star: star,
       heard: heard,
-    }
+    };
   },
   computed: {
     animationClass() {
       return this.$route.matched[0].props.default.myClass;
-    }
-
-  }
-
+    },
+  },
 };
 </script>

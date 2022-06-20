@@ -9,8 +9,8 @@ const store = createStore({
     AreYouVaccinated,
     CovidPolitic,
     CovidState,
-    PersonalInformation
-  }
+    PersonalInformation,
+  },
 });
 
 export default store;

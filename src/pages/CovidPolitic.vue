@@ -1,14 +1,20 @@
 <template>
   <Layout>
     <CommonHeader page="4" />
-    <div class="flex justify-between font-helvetica flex w-full h-[70vh] md:h-[70vh]">
+    <div
+      class="flex justify-between font-helvetica w-full h-[70vh] md:h-[70vh]"
+    >
       <div class="w-full md:w-1/2 overflow-auto relative">
         <p>
           რედბერის მთავარი ღირებულება ჩვენი გუნდის თითოეული წევრია. გარემო,
           რომელსაც ჩვენი თანამშრომლები ქმნით, ბევრისთვის არის და ყოფილა წლების
-          განმავლობაში მიზნებისთვის ერთად ბრძოლის მიზეზი, ბევრისთვის კი — ჩვენთან
-          გადმოსვლის. <br> <br> პანდემიის პერიოდში ერთმანეთსაც იშვიათად ვნახულობთ პირისპირ
-          და ყოველდღიური კომუნიკაციაც გაიშვიათდა. <br> <br> <br>
+          განმავლობაში მიზნებისთვის ერთად ბრძოლის მიზეზი, ბევრისთვის კი —
+          ჩვენთან გადმოსვლის. <br />
+          <br />
+          პანდემიის პერიოდში ერთმანეთსაც იშვიათად ვნახულობთ პირისპირ და
+          ყოველდღიური კომუნიკაციაც გაიშვიათდა. <br />
+          <br />
+          <br />
         </p>
         <form class="w-full text-center md:text-left">
           <input-radio
@@ -52,7 +58,7 @@
             :value="tellUsYourOpinionAboutUsValue"
             :update-value="updateTellUsYourOpinionAboutUsValue"
           />
-        <SubmitFormButton></SubmitFormButton>
+          <SubmitFormButton></SubmitFormButton>
         </form>
       </div>
       <section-image :image="guyOnBike"></section-image>
@@ -72,9 +78,8 @@ import InputRadio from "../components/UI/inputs/InputRadio.vue";
 import InputTextarea from "../components/UI/inputs/InputTextarea.vue";
 import Navigation from "@/components/layouts/Navigation";
 import SectionImage from "@/components/layouts/SectionImage";
-import guyOnBike from  '../assets/images/scan-bike-boy.png'
+import guyOnBike from "../assets/images/scan-bike-boy.png";
 import SubmitFormButton from "@/components/layouts/SubmitFormButton";
-
 
 export default {
   name: "CovidPolitic",
@@ -85,12 +90,12 @@ export default {
     InputRadio,
     InputTextarea,
     Navigation,
-    SubmitFormButton
+    SubmitFormButton,
   },
   data() {
     return {
-      guyOnBike: guyOnBike
-    }
+      guyOnBike: guyOnBike,
+    };
   },
   computed: {
     nonFormalMeetingsValue() {
@@ -104,16 +109,16 @@ export default {
     },
     tellUsYourOpinionAboutUsValue() {
       return this.$store.getters.tellUsYourOpinionAboutUs;
-    }
+    },
   },
   methods: {
     updateNonFormalMeetingsValue(e) {
       this.$store.commit("updateNonFormalMeetings", e.target.value);
-      this.validateForm()
+      this.validateForm();
     },
     updateNumberOfDaysFromOfficeValue(e) {
       this.$store.commit("updateNumberOfDaysFromOffice", e.target.value);
-      this.validateForm()
+      this.validateForm();
     },
     updateWhatAboutMeetingsInLiveValue(e) {
       this.$store.commit("updateWhatAboutMeetingsInLive", e.target.value);
@@ -121,14 +126,20 @@ export default {
     updateTellUsYourOpinionAboutUsValue(e) {
       this.$store.commit("updateTellUsYourOpinionAboutUs", e.target.value);
     },
-    validateForm () {
-      if(this.nonFormalMeetingsValue === '' && this.numberOfDaysFromOfficeValue === ''){
+    validateForm() {
+      if (
+        this.nonFormalMeetingsValue === "" &&
+        this.numberOfDaysFromOfficeValue === ""
+      ) {
         this.$store.commit("updateCovidPoliticIsValid", false);
       }
-      if(this.nonFormalMeetingsValue !== '' && this.numberOfDaysFromOfficeValue !== ''){
+      if (
+        this.nonFormalMeetingsValue !== "" &&
+        this.numberOfDaysFromOfficeValue !== ""
+      ) {
         this.$store.commit("updateCovidPoliticIsValid", true);
       }
-    }
-  }
+    },
+  },
 };
 </script>

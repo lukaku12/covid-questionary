@@ -1,8 +1,8 @@
 <template>
   <Layout>
     <CommonHeader page="1" />
-    <div class="flex justify-between font-helvetica flex w-full md:h-[70vh]">
-      <div class="w-full md:w-1/2 md:mt-10 ">
+    <div class="flex justify-between font-helvetica w-full md:h-[70vh]">
+      <div class="w-full md:w-1/2 md:mt-10">
         <Form class="w-full text-center md:text-left">
           <basic-input
             question="სახელი*"

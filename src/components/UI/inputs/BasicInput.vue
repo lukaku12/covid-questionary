@@ -8,8 +8,8 @@
       :name="name"
       :value="value"
       :placeholder="placeholder"
-      @input="updateValue"
       :rules="rules"
+      @input="updateValue"
     />
     <ErrorMessage class="text-red-600" :name="name"></ErrorMessage>
   </div>
@@ -52,7 +52,7 @@ export default {
     rules: {
       type: String,
       required: false,
-    }
+    },
   },
 };
 </script>

@@ -3,10 +3,14 @@
     <div class="flex justify-between align-middle">
       <img src="../../assets/icons/redberry.svg" alt="redberry" />
       <div>
-      <span class="text-4xl text-[#232323] font-anonnymusPro font-bold appearAnimation">
-        {{ page }}
-      </span>
-        <span class="text-4xl text-[#232323] font-anonnymusPro font-bold">/4</span>
+        <span
+          class="text-4xl text-[#232323] font-anonnymusPro font-bold appearAnimation"
+        >
+          {{ page }}
+        </span>
+        <span class="text-4xl text-[#232323] font-anonnymusPro font-bold"
+          >/4</span
+        >
       </div>
     </div>
 
@@ -19,8 +23,9 @@ export default {
   name: "CommonHeader",
   props: {
     page: {
-      type: String
-    }
-  }
+      type: String,
+      required: true,
+    },
+  },
 };
 </script>

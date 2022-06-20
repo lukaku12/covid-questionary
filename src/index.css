@@ -14,27 +14,28 @@ body {
   color: #232323;
   overflow-x: hidden;
 }
-#app{
+#app {
   width: 100%;
   height: 100%;
   display: flex;
   justify-content: center;
 }
-.astyle a,.astyle a:visited {
+.astyle a,
+.astyle a:visited {
   color: cornflowerblue;
 }
 
 /*intro styling*/
-.intro{
+.intro {
   width: 100%;
   height: 100%;
 }
-.carousel-inner{
+.carousel-inner {
   overflow: hidden;
   width: 100%;
   height: 100vh;
 }
-.item{
+.item {
   background-image: url(./assets/images/introimage.png);
   background-size: 100% 100%;
   animation: logo 0.5s ease-in forwards;
@@ -43,14 +44,14 @@ body {
   animation-play-state: running;
   z-index: 1000;
 }
-.text{
+.text {
   margin-left: auto;
   animation: text 1s linear 0s;
   margin-right: auto;
   position: absolute;
   width: 498px;
   height: 179px;
-  left: calc(50% - 498px/2);
+  left: calc(50% - 498px / 2);
   top: 444px;
   font-style: normal;
   font-weight: bold;
@@ -58,10 +59,10 @@ body {
   line-height: 36px;
   text-align: center;
   text-transform: lowercase;
-  font-feature-settings: 'case' on;
+  font-feature-settings: "case" on;
   color: #232323;
 }
-.button1{
+.button1 {
   -webkit-user-select: none;
   width: 498px;
   height: 179px;
@@ -74,7 +75,7 @@ body {
   margin-top: auto;
   animation: button 1s 1;
 }
-.buttonText{
+.buttonText {
   font-family: monospace;
   font-weight: bold;
   font-size: 30px;
@@ -84,32 +85,44 @@ body {
   z-index: -1;
 }
 @keyframes logo {
-  to { margin-left: calc(50% - 50px) ;}
-  to { margin-top: 15%;}
-  to { width: 100px;}
-  to { height: 100px;}
-  to { border-radius: 50%; }
-  to { background-image:url(./assets/images/logotest.png); }
+  to {
+    margin-left: calc(50% - 50px);
+  }
+  to {
+    margin-top: 15%;
+  }
+  to {
+    width: 100px;
+  }
+  to {
+    height: 100px;
+  }
+  to {
+    border-radius: 50%;
+  }
+  to {
+    background-image: url(./assets/images/logotest.png);
+  }
 }
-.buttonText:hover{
+.buttonText:hover {
   text-shadow: 2px 2px gray;
   cursor: pointer;
 }
-.text span{
+.text span {
   text-transform: uppercase;
   display: block;
 }
-@keyframes button{
-  0%{
-    color: #FE3B1F;
+@keyframes button {
+  0% {
+    color: #fe3b1f;
     margin-bottom: -60px;
   }
-  30%{
-    color: #FE3B1F;
+  30% {
+    color: #fe3b1f;
     letter-spacing: 38px;
     margin-bottom: -60px;
   }
-  100%{
+  100% {
     letter-spacing: 2px;
     margin-bottom: -60px;
   }
@@ -117,9 +130,9 @@ body {
 /*hide first page for intro*/
 
 /*ANIMATION*/
-.rectangle{
+.rectangle {
   position: absolute;
-  background: #D6D16E;
+  background: #d6d16e;
   top: 25%;
   left: 11%;
   width: 75%;
@@ -127,9 +140,9 @@ body {
   animation: squareAnimation 0.6s ease-out;
 }
 
-@keyframes squareAnimation{
+@keyframes squareAnimation {
   from {
-    background: #D6D16E;
+    background: #d6d16e;
     top: 40%;
     left: 0;
     width: 10%;
@@ -137,14 +150,14 @@ body {
   }
 }
 /*cricle for second page*/
-.pageImage{
+.pageImage {
   position: relative;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
 }
-.red-ball{
+.red-ball {
   position: absolute;
   opacity: 100%;
   width: 20%;
@@ -153,10 +166,10 @@ body {
   left: 13%;
   animation: circleAnimation 0.6s ease-out;
 }
-@keyframes circleAnimation{
+@keyframes circleAnimation {
   from {
     position: absolute;
-    background: #D6D16E;
+    background: #d6d16e;
     top: 25%;
     left: 11%;
     width: 75%;
@@ -164,7 +177,7 @@ body {
   }
 }
 /*star for third page*/
-.star{
+.star {
   position: absolute;
   width: 30%;
   height: 40%;
@@ -172,7 +185,7 @@ body {
   left: 6%;
   animation: starAnimation 0.6s ease-out;
 }
-@keyframes starAnimation{
+@keyframes starAnimation {
   from {
     position: absolute;
     width: 20%;
@@ -184,16 +197,16 @@ body {
   }
 }
 /*heart for third page*/
-.heart{
+.heart {
   position: absolute;
   top: 10%;
   left: 13%;
   opacity: 70%;
   width: 30%;
   height: 25%;
-  animation: heartAnimation 0.6s ease-out;;
+  animation: heartAnimation 0.6s ease-out;
 }
-@keyframes heartAnimation{
+@keyframes heartAnimation {
   from {
     opacity: 100%;
     width: 30%;
@@ -203,22 +216,22 @@ body {
   }
 }
 /*thank you page*/
-.text1{
+.text1 {
   animation: thank-you 1s;
   letter-spacing: 30px;
 }
 @keyframes thank-you {
-  0%{
+  0% {
     color: #232323;
   }
-  30%{
+  30% {
     letter-spacing: 60px;
   }
-  100%{
+  100% {
     letter-spacing: 30px;
   }
 }
-.left-star{
+.left-star {
   width: 52px;
   height: 52px;
   left: 50px;
@@ -240,7 +253,7 @@ body {
   from {
     opacity: 0;
   }
-  to{
+  to {
     top: -80px;
     opacity: 1;
   }
@@ -249,12 +262,12 @@ body {
   from {
     opacity: 0;
   }
-  to{
+  to {
     bottom: -40px;
     opacity: 1;
   }
 }
-.appearAnimation{
+.appearAnimation {
   animation: inputPopUp 500ms ease-out;
 }
 @keyframes inputPopUp {
@@ -262,7 +275,7 @@ body {
     margin-top: -10px;
     opacity: 0;
   }
-  to{
+  to {
     margin-top: 0;
     opacity: 1;
   }

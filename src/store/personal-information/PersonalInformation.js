@@ -6,7 +6,7 @@ export default {
       last_name: "",
       email: "",
       personal_info_is_valid: false,
-    }
+    };
   },
   getters: {
     firstName(state) {
@@ -35,6 +35,5 @@ export default {
     updatePersonalInfoIsValid(state, payload) {
       state.personal_info_is_valid = payload;
     },
-  }
-
-}
+  },
+};

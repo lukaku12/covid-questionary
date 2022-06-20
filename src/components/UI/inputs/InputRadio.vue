@@ -3,16 +3,18 @@
     <span class="font-bold text-xl mb-2">
       {{ question }}
     </span>
-    <div class="text-left ml-2" v-for="option in options" :key="option">
+    <div v-for="option in options" :key="option" class="text-left ml-2">
       <input
-        type="radio"
         :id="option.value + name"
+        type="radio"
         :name="name"
         :value="option.value"
         :checked="option.value === selectedValue"
         @input="updateValue"
       />
-      <label :for="option.value + name" class="ml-5 font-normal text-xl">{{ option.text }}</label>
+      <label :for="option.value + name" class="ml-5 font-normal text-xl">{{
+        option.text
+      }}</label>
     </div>
   </div>
 </template>

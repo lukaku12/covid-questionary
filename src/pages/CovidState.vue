@@ -1,7 +1,7 @@
 <template>
   <Layout>
     <CommonHeader page="2" />
-    <div class="flex justify-between font-helvetica flex w-full md:h-[70vh]">
+    <div class="flex justify-between font-helvetica w-full md:h-[70vh]">
       <div class="w-full md:w-1/2 md:mt-10 overflow-auto">
         <form class="w-full text-center md:text-left">
           <input-radio
@@ -83,11 +83,11 @@ export default {
     InputRadio,
     BasicInput,
     Navigation,
-    SectionImage
+    SectionImage,
   },
   data() {
     return {
-      vaccine: vaccine
+      vaccine: vaccine,
     };
   },
   computed: {
@@ -105,7 +105,7 @@ export default {
     },
     covidStateIsValid() {
       return this.$store.getters.covidStateIsValid;
-    }
+    },
   },
   methods: {
     updateHadCovidValue(e) {
@@ -130,16 +130,25 @@ export default {
     },
 
     validateForm() {
-      if (this.hadCovidValue === "no" || this.hadCovidValue === "have_right_now") {
+      if (
+        this.hadCovidValue === "no" ||
+        this.hadCovidValue === "have_right_now"
+      ) {
         this.$store.commit("updateCovidStateIsValid", true);
       }
       if (this.hadCovidValue === "yes") {
         this.$store.commit("updateCovidStateIsValid", false);
 
         if (this.hadAntibodyTestValue === "yes") {
-          if (this.antibodiesValue.covid_date === "" && this.antibodiesValue.number === "") {
+          if (
+            this.antibodiesValue.covid_date === "" &&
+            this.antibodiesValue.number === ""
+          ) {
             this.$store.commit("updateCovidStateIsValid", false);
-          } else if (this.antibodiesValue.covid_date !== "" && this.antibodiesValue.number !== "") {
+          } else if (
+            this.antibodiesValue.covid_date !== "" &&
+            this.antibodiesValue.number !== ""
+          ) {
             this.$store.commit("updateCovidStateIsValid", true);
           }
         }
@@ -151,7 +160,7 @@ export default {
           }
         }
       }
-    }
-  }
+    },
+  },
 };
 </script>

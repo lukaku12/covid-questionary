@@ -6,7 +6,7 @@ export default {
       covid_date: "",
       antibodies: {
         covid_date: "",
-        number: ""
+        number: "",
       },
       covid_state_is_valid: false,
     };
@@ -22,7 +22,7 @@ export default {
       return state.covid_date;
     },
     antibodies(state) {
-      return state.antibodies
+      return state.antibodies;
     },
     covidStateIsValid(state) {
       return state.covid_state_is_valid;
@@ -49,4 +49,3 @@ export default {
     },
   },
 };
-

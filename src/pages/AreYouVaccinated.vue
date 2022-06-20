@@ -116,11 +116,11 @@ export default {
     InputRadio,
     Navigation,
     SmallFooter,
-    SectionImage
+    SectionImage,
   },
   data() {
     return {
-      doctor: doctor
+      doctor: doctor,
     };
   },
   computed: {
@@ -132,20 +132,20 @@ export default {
     },
     whatAreYouWaitingValue() {
       return this.$store.getters.whatAreYouWaiting;
-    }
+    },
   },
   methods: {
     updateHadVaccineValue(e) {
       this.$store.commit("updateHadVaccine", e.target.value);
-      this.validateForm()
+      this.validateForm();
     },
     updateVaccinationStageValue(e) {
       this.$store.commit("updateVaccinationStage", e.target.value);
-      this.validateForm()
+      this.validateForm();
     },
     updateWhatAreYouWaitingValue(e) {
       this.$store.commit("updateWhatAreYouWaiting", e.target.value);
-      this.validateForm()
+      this.validateForm();
     },
     validateForm() {
       if (this.hadVaccineValue === "yes") {
@@ -164,7 +164,7 @@ export default {
           this.$store.commit("updateVaccineStateIsValid", false);
         }
       }
-    }
-  }
+    },
+  },
 };
 </script>

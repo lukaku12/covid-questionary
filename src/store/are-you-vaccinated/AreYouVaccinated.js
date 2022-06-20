@@ -11,8 +11,8 @@ export default {
     hadVaccine(state) {
       return state.had_vaccine;
     },
-    vaccinationStage (state) {
-      return state.vaccination_stage
+    vaccinationStage(state) {
+      return state.vaccination_stage;
     },
     whatAreYouWaiting(state) {
       return state.what_are_you_waiting_for;
@@ -36,4 +36,3 @@ export default {
     },
   },
 };
-
