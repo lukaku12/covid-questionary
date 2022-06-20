@@ -9,7 +9,7 @@
       :value="value"
       :placeholder="placeholder"
       :rules="rules"
-      @input="updateValue"
+      @input="updateInputValue"
     />
     <ErrorMessage class="text-red-600" :name="name"></ErrorMessage>
   </div>
@@ -48,7 +48,7 @@ export default {
       default: '',
     },
     updateValue: {
-      type: Function,
+      type: String,
       required: true,
     },
     rules: {
@@ -56,6 +56,11 @@ export default {
       required: false,
       default: '',
     },
+  },
+  methods: {
+    updateInputValue (e) {
+      this.$store.commit(this.updateValue, e.target.value);
+    }
   },
 };
 </script>

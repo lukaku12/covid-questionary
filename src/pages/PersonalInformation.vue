@@ -10,7 +10,7 @@
             name="name"
             placeholder="იოსებ"
             :value="nameValue"
-            :update-value="updateNameValue"
+            update-value="updateFirstName"
             rules="required|min-length:3|max-length:255"
           />
           <basic-input
@@ -19,7 +19,7 @@
             name="lastname"
             placeholder="ჯუღაშვილი"
             :value="lastNameValue"
-            :update-value="updateLastNameValue"
+            update-value="updateLastName"
             rules="required|min-length:3|max-length:255"
           />
           <basic-input
@@ -28,7 +28,7 @@
             name="email"
             placeholder="fbi@redberry.ge"
             :value="emailValue"
-            :update-value="updateEmailValue"
+            update-value="updateEmail"
             rules="required|min-length:3|max-length:255|correct-email|redberry-email"
           />
         </Form>
@@ -75,17 +75,6 @@ export default {
     },
     emailValue() {
       return this.$store.getters.email;
-    },
-  },
-  methods: {
-    updateNameValue(e) {
-      this.$store.commit("updateFirstName", e.target.value);
-    },
-    updateLastNameValue(e) {
-      this.$store.commit("updateLastName", e.target.value);
-    },
-    updateEmailValue(e) {
-      this.$store.commit("updateEmail", e.target.value);
     },
   },
 };
