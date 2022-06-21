@@ -49,6 +49,7 @@ import Navigation from "@/components/layouts/Navigation";
 import SectionImage from "@/components/layouts/SectionImage";
 import scanBoyAndGirl from "@/assets/images/scan-boy-and-girl.png";
 import { Form } from "vee-validate";
+import { mapState } from "vuex";
 
 export default {
   name: "PersonalInformation",
@@ -67,15 +68,11 @@ export default {
     };
   },
   computed: {
-    nameValue() {
-      return this.$store.state.PersonalInformation.first_name;
-    },
-    lastNameValue() {
-      return this.$store.state.PersonalInformation.last_name;
-    },
-    emailValue() {
-      return this.$store.state.PersonalInformation.email;
-    },
+    ...mapState({
+      nameValue: (state) => state.PersonalInformation.first_name,
+      lastNameValue: (state) => state.PersonalInformation.last_name,
+      emailValue: (state) => state.PersonalInformation.email,
+    }),
   },
 };
 </script>

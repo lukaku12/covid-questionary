@@ -16,48 +16,48 @@
             update-value="updateHadCovid"
           />
 
-          <input-radio
-            v-if="hadCovidValue === 'yes'"
-            question="ანტისხეულების ტესტი გაქვს გაკეთებული?*"
-            name="antibodies_test"
-            :options="[
-              { text: 'კი', value: 'yes' },
-              { text: 'არა', value: 'no' },
-            ]"
-            :selected-value="hadAntibodyTestValue"
-            update-value="updateHadAntibodyTest"
-          />
+          <div v-if="hadCovidValue === 'yes'">
+            <input-radio
+              question="ანტისხეულების ტესტი გაქვს გაკეთებული?*"
+              name="antibodies_test"
+              :options="[
+                { text: 'კი', value: 'yes' },
+                { text: 'არა', value: 'no' },
+              ]"
+              :selected-value="hadAntibodyTestValue"
+              update-value="updateHadAntibodyTest"
+            />
 
-          <basic-input
-            v-if="hadCovidValue === 'yes' && hadAntibodyTestValue === 'no'"
-            question="მიუთითე მიახლოებითი პერიოდი (დღე/თვე/წელი) როდის გქონდა Covid-19*"
-            type="date"
-            name="had_covid_date"
-            placeholder="დდ/თთ/წწ"
-            :value="whenCovidValue"
-            update-value="updateWhenCovid"
-            error-msg=""
-          />
-
-          <basic-input
-            v-if="hadCovidValue === 'yes' && hadAntibodyTestValue === 'yes'"
-            question="თუ გახსოვს, გთხოვ მიუთითე ტესტის მიახლოებითი რიცხვი და ანტისხეულების რაოდენობა*"
-            type="date"
-            name="had_covid_date"
-            :value="antibodiesValue.covid_date"
-            update-value="updateAntibodies"
-            error-msg=""
-          />
-          <basic-input
-            v-if="hadCovidValue === 'yes' && hadAntibodyTestValue === 'yes'"
-            question=""
-            type="number"
-            name="had_covid_date"
-            placeholder="ანტისხეულების რაოდენობა"
-            :value="antibodiesValue.number"
-            update-value="updateAntibodiesNumber"
-            error-msg=""
-          />
+            <div v-if="hadAntibodyTestValue === 'yes'">
+              <basic-input
+                question="თუ გახსოვს, გთხოვ მიუთითე ტესტის მიახლოებითი რიცხვი და ანტისხეულების რაოდენობა*"
+                type="date"
+                name="had_covid_date"
+                :value="antibodiesValue.covid_date"
+                update-value="updateAntibodies"
+                error-msg=""
+              />
+              <basic-input
+                question=""
+                type="number"
+                name="had_covid_date"
+                placeholder="ანტისხეულების რაოდენობა"
+                :value="antibodiesValue.number"
+                update-value="updateAntibodiesNumber"
+                error-msg=""
+              />
+            </div>
+            <basic-input
+              v-if="hadAntibodyTestValue === 'no'"
+              question="მიუთითე მიახლოებითი პერიოდი (დღე/თვე/წელი) როდის გქონდა Covid-19*"
+              type="date"
+              name="had_covid_date"
+              placeholder="დდ/თთ/წწ"
+              :value="whenCovidValue"
+              update-value="updateWhenCovid"
+              error-msg=""
+            />
+          </div>
         </form>
       </div>
       <section-image :image="vaccine"></section-image>
@@ -74,6 +74,7 @@ import BasicInput from "@/components/UI/inputs/BasicInput.vue";
 import Navigation from "@/components/layouts/Navigation";
 import SectionImage from "@/components/layouts/SectionImage";
 import vaccine from "@/assets/images/scan-vaccinate.png";
+import { mapState } from "vuex";
 
 export default {
   name: "CovidState",
@@ -91,21 +92,13 @@ export default {
     };
   },
   computed: {
-    hadCovidValue() {
-      return this.$store.state.CovidState.had_covid;
-    },
-    hadAntibodyTestValue() {
-      return this.$store.state.CovidState.had_antibody_test;
-    },
-    whenCovidValue() {
-      return this.$store.state.CovidState.covid_date;
-    },
-    antibodiesValue() {
-      return this.$store.state.CovidState.antibodies;
-    },
-    covidStateIsValid() {
-      return this.$store.state.CovidState.covid_state_is_valid;
-    },
+    ...mapState({
+      hadCovidValue: (state) => state.CovidState.had_covid,
+      hadAntibodyTestValue: (state) => state.CovidState.had_antibody_test,
+      whenCovidValue: (state) => state.CovidState.covid_date,
+      antibodiesValue: (state) => state.CovidState.antibodies,
+      covidStateIsValid: (state) => state.CovidState.covid_state_is_valid,
+    }),
   },
   methods: {
     validateForm() {

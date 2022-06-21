@@ -34,8 +34,8 @@
             />
             <small-footer
               v-if="
-                hadVaccineValue === 'no' &&
-                whatAreYouWaitingValue === 'already_had'
+                whatAreYouWaitingValue ===
+                'had_covid_and_planning_to_be_vaccinated'
               "
               text="ახალი პროტოკოლით კოვიდის გადატანიდან 1 თვის შემდეგ შეგიძლიათ ვაქცინის გაკეთება.
                     </br></br>
@@ -46,10 +46,7 @@
             "
             ></small-footer>
             <small-footer
-              v-if="
-                hadVaccineValue === 'no' &&
-                whatAreYouWaitingValue === 'not_planning'
-              "
+              v-if="whatAreYouWaitingValue === 'not_planning'"
               text="👉 <a href='https://booking.moh.gov.ge/'>https://booking.moh.gov.ge/</a>"
             >
             </small-footer>
@@ -107,6 +104,7 @@ import Navigation from "@/components/layouts/Navigation";
 import SmallFooter from "@/components/UI/SmallFooter";
 import SectionImage from "@/components/layouts/SectionImage";
 import doctor from "@/assets/images/scan-doctor.png";
+import { mapState } from "vuex";
 
 export default {
   name: "AreYouVaccinated",
@@ -124,15 +122,13 @@ export default {
     };
   },
   computed: {
-    hadVaccineValue() {
-      return this.$store.state.AreYouVaccinated.had_vaccine;
-    },
-    vaccinationStageValue() {
-      return this.$store.state.AreYouVaccinated.vaccination_stage;
-    },
-    whatAreYouWaitingValue() {
-      return this.$store.state.AreYouVaccinated.what_are_you_waiting_for;
-    },
+    ...mapState({
+      hadVaccineValue: (state) => state.AreYouVaccinated.had_vaccine,
+      vaccinationStageValue: (state) =>
+        state.AreYouVaccinated.vaccination_stage,
+      whatAreYouWaitingValue: (state) =>
+        state.AreYouVaccinated.what_are_you_waiting_for,
+    }),
   },
   methods: {
     validateForm() {

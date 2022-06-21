@@ -80,6 +80,7 @@ import Navigation from "@/components/layouts/Navigation";
 import SectionImage from "@/components/layouts/SectionImage";
 import guyOnBike from "@/assets/images/scan-bike-boy.png";
 import SubmitFormButton from "@/components/layouts/SubmitFormButton";
+import { mapState } from "vuex";
 
 export default {
   name: "CovidPolitic",
@@ -98,18 +99,15 @@ export default {
     };
   },
   computed: {
-    nonFormalMeetingsValue() {
-      return this.$store.state.CovidPolitic.non_formal_meetings;
-    },
-    numberOfDaysFromOfficeValue() {
-      return this.$store.state.CovidPolitic.number_of_days_from_office;
-    },
-    whatAboutMeetingsInLiveValue() {
-      return this.$store.state.CovidPolitic.what_about_meetings_in_live;
-    },
-    tellUsYourOpinionAboutUsValue() {
-      return this.$store.state.CovidPolitic.tell_us_your_opinion_about_us;
-    },
+    ...mapState({
+      nonFormalMeetingsValue: (state) => state.CovidPolitic.non_formal_meetings,
+      numberOfDaysFromOfficeValue: (state) =>
+        state.CovidPolitic.number_of_days_from_office,
+      whatAboutMeetingsInLiveValue: (state) =>
+        state.CovidPolitic.what_about_meetings_in_live,
+      tellUsYourOpinionAboutUsValue: (state) =>
+        state.CovidPolitic.tell_us_your_opinion_about_us,
+    }),
   },
   methods: {
     validateForm() {
