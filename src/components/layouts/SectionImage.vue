@@ -9,38 +9,33 @@
       v-if="animationClass === 'rectangle'"
       class="-z-10"
       :class="animationClass"
-      :src="rectangle"
+      src="@/assets/images/rectangle.png"
       :alt="animationClass"
     />
     <img
       v-if="animationClass === 'red-ball'"
       class="-z-10"
       :class="animationClass"
-      :src="circle"
+      src="@/assets/images/red-ball.png"
       :alt="animationClass"
     />
     <img
       v-if="animationClass === 'star'"
       class="-z-10"
       :class="animationClass"
-      :src="star"
+      src="@/assets/images/star.png"
       :alt="animationClass"
     />
     <img
       v-if="animationClass === 'heart'"
       class="-z-10"
       :class="animationClass"
-      :src="heard"
+      src="@/assets/images/heart.png"
       :alt="animationClass"
     />
   </div>
 </template>
 <script>
-import rectangle from "@/assets/images/rectangle.png";
-import circle from "@/assets/images/red-ball.png";
-import star from "@/assets/images/star.png";
-import heard from "@/assets/images/heart.png";
-
 export default {
   name: "SectionImage",
   props: {
@@ -48,14 +43,6 @@ export default {
       type: String,
       required: true,
     },
-  },
-  data() {
-    return {
-      rectangle: rectangle,
-      circle: circle,
-      star: star,
-      heard: heard,
-    };
   },
   computed: {
     animationClass() {
