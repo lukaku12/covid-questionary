@@ -8,6 +8,17 @@ export default {
     };
   },
   getters: {
+    getAreYouVaccinated(state) {
+      return {
+        had_vaccine: state.had_vaccine === "yes",
+        ...(state.had_vaccine === "yes" && {
+          vaccination_stage: state.vaccination_stage,
+        }),
+        ...(state.had_vaccine === "no" && {
+          i_am_waiting: state.what_are_you_waiting_for,
+        }),
+      }
+    }
   },
   mutations: {
     updateHadVaccine(state, payload) {

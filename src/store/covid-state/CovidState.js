@@ -12,6 +12,23 @@ export default {
     };
   },
   getters: {
+    getCovidState(state) {
+      return {
+        had_covid: state.had_covid,
+        ...(state.had_covid === "yes" && {
+          had_antibody_test: state.had_antibody_test === "yes",
+          ...(state.had_antibody_test === "yes" && {
+            antibodies: {
+              covid_date: state.antibodies.covid_date,
+              number: parseInt(state.antibodies.number),
+            },
+          }),
+          ...(state.had_antibody_test === "no" && {
+            covid_sickness_date: state.covid_date.replace(/-/g, "/"),
+          }),
+        }),
+      }
+    }
   },
   mutations: {
     updateHadCovid(state, payload) {

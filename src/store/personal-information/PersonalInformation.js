@@ -8,6 +8,13 @@ export default {
     };
   },
   getters: {
+    getPersonalInfo(state) {
+      return {
+        first_name: state.first_name,
+        last_name: state.last_name,
+        email: state.email,
+      }
+    },
   },
   mutations: {
     updateFirstName(state, payload) {
