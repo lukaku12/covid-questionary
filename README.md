@@ -25,7 +25,7 @@ The questionnaire consists of 6 pages:
 
 ### Prerequisites
 
-- <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Vue.js_Logo_2.svg/512px-Vue.js_Logo_2.svg.png?20170919082558" height="15" style="position: relative; top: 4px" /> *Vue@5.0.4 and up*
+- <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Vue.js_Logo_2.svg/512px-Vue.js_Logo_2.svg.png?20170919082558" height="15" style="position: relative; top: 4px" /> *Vue3*
 - <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Npm-logo.svg/540px-Npm-logo.svg.png?20140904162625" width="35" style="position: relative; top: 4px" /> *npm@6.14.17 and up*
 
 #
