@@ -11,7 +11,7 @@
             placeholder="იოსებ"
             :value="nameValue"
             update-value="updateFirstName"
-            rules="required|min-length:3|max-length:255"
+            rules="required|min:3|max:255"
           />
           <basic-input
             question="გვარი*"
@@ -20,7 +20,7 @@
             placeholder="ჯუღაშვილი"
             :value="lastNameValue"
             update-value="updateLastName"
-            rules="required|min-length:3|max-length:255"
+            rules="required|min:3|max:255"
           />
           <basic-input
             question="მეილი*"
@@ -29,7 +29,7 @@
             placeholder="fbi@redberry.ge"
             :value="emailValue"
             update-value="updateEmail"
-            rules="required|min-length:3|max-length:255|correct-email|redberry-email"
+            rules="required|min:3|max:255|email|redberry-email"
           />
         </Form>
         <small-footer text="*-ით მონიშნული ველების შევსება სავალდებულოა" />
