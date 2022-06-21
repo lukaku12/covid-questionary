@@ -8,13 +8,13 @@
       </span>
       <img
         class="absolute left-star"
-        src="../assets/icons/vector-thank-you.png"
-        alt=""
+        src="@/assets/icons/vector-thank-you.png"
+        alt="left-star"
       />
       <img
         class="absolute right-star"
-        src="../assets/icons/vector-thank-you.png"
-        alt=""
+        src="@/assets/icons/vector-thank-you.png"
+        alt="right-star"
       />
     </div>
   </div>
