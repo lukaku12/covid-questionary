@@ -2,7 +2,7 @@
   <div class="flex justify-center items-center my-10 w-full gap-6">
     <button>
       <router-link :to="{ name: prevPage }">
-        <img src="@/assets/icons/arrow-left.svg" alt="<" />
+        <img src="@/assets/icons/arrow-left.svg" alt="arrow-left" />
       </router-link>
     </button>
     <button
@@ -13,7 +13,7 @@
       "
     >
       <router-link :to="{ name: nextPage }">
-        <img src="@/assets/icons/arrow-right.svg" alt=">" />
+        <img src="@/assets/icons/arrow-right.svg" alt="arrow-right" />
       </router-link>
     </button>
   </div>
