@@ -15,6 +15,8 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   name: "SubmitFormButton",
   data() {
@@ -71,26 +73,16 @@ export default {
             state.CovidPolitic.tell_us_your_opinion_about_us,
         }),
       };
-      async function postData(url = "", data = {}) {
-        return await fetch(url, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(data),
-        });
-      }
 
       const router = this.$router;
-      postData("https://covid19.devtest.ge/api/create", sendData).then(
-        (data) => {
-          if (!data.ok) {
-            this.apiError = "Something Went Wrong Please Try Again Later!";
-            return;
-          }
+      axios
+        .post("https://covid19.devtest.ge/api/create", sendData)
+        .then(() => {
           router.push({ name: "thank-you" });
-        }
-      );
+        })
+        .catch(() => {
+          this.apiError = "Something Went Wrong Please Try Again Later!";
+        });
     },
   },
 };
