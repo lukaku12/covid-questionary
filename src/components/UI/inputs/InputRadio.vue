@@ -10,7 +10,7 @@
         :name="name"
         :value="option.value"
         :checked="option.value === selectedValue"
-        @input="updateValue"
+        @input="updateInputValue"
       />
       <label :for="option.value + name" class="ml-5 font-normal text-xl">{{
         option.text
@@ -40,8 +40,13 @@ export default {
       required: true,
     },
     updateValue: {
-      type: Function,
+      type: String,
       required: true,
+    },
+  },
+  methods: {
+    updateInputValue(e) {
+      this.$store.commit(this.updateValue, e.target.value);
     },
   },
 };

@@ -12,21 +12,6 @@ export default {
     };
   },
   getters: {
-    hadCovid(state) {
-      return state.had_covid;
-    },
-    hadAntibodyTest(state) {
-      return state.had_antibody_test;
-    },
-    covidDate(state) {
-      return state.covid_date;
-    },
-    antibodies(state) {
-      return state.antibodies;
-    },
-    covidStateIsValid(state) {
-      return state.covid_state_is_valid;
-    },
   },
   mutations: {
     updateHadCovid(state, payload) {

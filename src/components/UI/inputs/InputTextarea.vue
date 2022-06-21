@@ -6,7 +6,7 @@
       :name="name"
       :value="value"
       class="w-full h-24 border border-[#232323] bg-transparent pl-5 focus:outline-none resize-none"
-      @input="updateValue"
+      @input="updateInputValue"
     ></textarea>
   </div>
 </template>
@@ -28,8 +28,13 @@ export default {
       required: true,
     },
     updateValue: {
-      type: Function,
+      type: String,
       required: true,
+    },
+  },
+  methods: {
+    updateInputValue(e) {
+      this.$store.commit(this.updateValue, e.target.value);
     },
   },
 };

@@ -68,13 +68,13 @@ export default {
   },
   computed: {
     nameValue() {
-      return this.$store.getters.firstName;
+      return this.$store.state.PersonalInformation.first_name;
     },
     lastNameValue() {
-      return this.$store.getters.lastName;
+      return this.$store.state.PersonalInformation.last_name;
     },
     emailValue() {
-      return this.$store.getters.email;
+      return this.$store.state.PersonalInformation.email;
     },
   },
 };

@@ -8,18 +8,6 @@ export default {
     };
   },
   getters: {
-    hadVaccine(state) {
-      return state.had_vaccine;
-    },
-    vaccinationStage(state) {
-      return state.vaccination_stage;
-    },
-    whatAreYouWaiting(state) {
-      return state.what_are_you_waiting_for;
-    },
-    vaccineStateIsValid(state) {
-      return state.vaccine_state_is_valid;
-    },
   },
   mutations: {
     updateHadVaccine(state, payload) {

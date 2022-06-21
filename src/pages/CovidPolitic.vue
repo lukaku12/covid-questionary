@@ -27,7 +27,7 @@
               { text: 'თვეში ერთხელ', value: 'once_in_a_month' },
             ]"
             :selected-value="nonFormalMeetingsValue"
-            :update-value="updateNonFormalMeetingsValue"
+            update-value="updateNonFormalMeetings"
           />
 
           <input-radio
@@ -42,21 +42,21 @@
               { text: 5, value: '5' },
             ]"
             :selected-value="numberOfDaysFromOfficeValue"
-            :update-value="updateNumberOfDaysFromOfficeValue"
+            update-value="updateNumberOfDaysFromOffice"
           />
 
           <input-textarea
             question="რას ფიქრობ ფიზიკურ შეკრებებზე?"
             name="gatherings"
             :value="whatAboutMeetingsInLiveValue"
-            :update-value="updateWhatAboutMeetingsInLiveValue"
+            update-value="updateWhatAboutMeetingsInLive"
           />
 
           <input-textarea
             question="რას ფიქრობ არსებულ გარემოზე:<br />რა მოგწონს, რას დაამატებდი, რას შეცვლიდი?"
             name="environment"
             :value="tellUsYourOpinionAboutUsValue"
-            :update-value="updateTellUsYourOpinionAboutUsValue"
+            update-value="updateTellUsYourOpinionAboutUs"
           />
           <SubmitFormButton></SubmitFormButton>
         </form>
@@ -99,33 +99,19 @@ export default {
   },
   computed: {
     nonFormalMeetingsValue() {
-      return this.$store.getters.nonFormalMeetings;
+      return this.$store.state.CovidPolitic.non_formal_meetings;
     },
     numberOfDaysFromOfficeValue() {
-      return this.$store.getters.numberOfDaysFromOffice;
+      return this.$store.state.CovidPolitic.number_of_days_from_office;
     },
     whatAboutMeetingsInLiveValue() {
-      return this.$store.getters.whatAboutMeetingsInLive;
+      return this.$store.state.CovidPolitic.what_about_meetings_in_live;
     },
     tellUsYourOpinionAboutUsValue() {
-      return this.$store.getters.tellUsYourOpinionAboutUs;
+      return this.$store.state.CovidPolitic.tell_us_your_opinion_about_us;
     },
   },
   methods: {
-    updateNonFormalMeetingsValue(e) {
-      this.$store.commit("updateNonFormalMeetings", e.target.value);
-      this.validateForm();
-    },
-    updateNumberOfDaysFromOfficeValue(e) {
-      this.$store.commit("updateNumberOfDaysFromOffice", e.target.value);
-      this.validateForm();
-    },
-    updateWhatAboutMeetingsInLiveValue(e) {
-      this.$store.commit("updateWhatAboutMeetingsInLive", e.target.value);
-    },
-    updateTellUsYourOpinionAboutUsValue(e) {
-      this.$store.commit("updateTellUsYourOpinionAboutUs", e.target.value);
-    },
     validateForm() {
       if (
         this.nonFormalMeetingsValue === "" &&

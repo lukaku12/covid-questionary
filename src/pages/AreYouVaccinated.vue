@@ -12,7 +12,7 @@
               { text: 'არა', value: 'no' },
             ]"
             :selected-value="hadVaccineValue"
-            :update-value="updateHadVaccineValue"
+            update-value="updateHadVaccine"
           />
           <div v-if="hadVaccineValue === 'no'">
             <input-radio
@@ -30,7 +30,7 @@
                 },
               ]"
               :selected-value="whatAreYouWaitingValue"
-              :update-value="updateWhatAreYouWaitingValue"
+              update-value="updateWhatAreYouWaiting"
             />
             <small-footer
               v-if="
@@ -71,12 +71,12 @@
                 },
               ]"
               :selected-value="vaccinationStageValue"
-              :update-value="updateVaccinationStageValue"
+              update-value="updateVaccinationStage"
             />
             <small-footer
               v-if="
                 hadVaccineValue === 'yes' &&
-                vaccinationStageValue === 'registered_for_second'
+                vaccinationStageValue === 'first_dosage_and_not_registered_yet'
               "
               text="რომ არ გადადო, ბარემ ახლავე დარეგისტრირდი
                     </br></br>
@@ -125,28 +125,16 @@ export default {
   },
   computed: {
     hadVaccineValue() {
-      return this.$store.getters.hadVaccine;
+      return this.$store.state.AreYouVaccinated.had_vaccine;
     },
     vaccinationStageValue() {
-      return this.$store.getters.vaccinationStage;
+      return this.$store.state.AreYouVaccinated.vaccination_stage;
     },
     whatAreYouWaitingValue() {
-      return this.$store.getters.whatAreYouWaiting;
+      return this.$store.state.AreYouVaccinated.what_are_you_waiting_for;
     },
   },
   methods: {
-    updateHadVaccineValue(e) {
-      this.$store.commit("updateHadVaccine", e.target.value);
-      this.validateForm();
-    },
-    updateVaccinationStageValue(e) {
-      this.$store.commit("updateVaccinationStage", e.target.value);
-      this.validateForm();
-    },
-    updateWhatAreYouWaitingValue(e) {
-      this.$store.commit("updateWhatAreYouWaiting", e.target.value);
-      this.validateForm();
-    },
     validateForm() {
       if (this.hadVaccineValue === "yes") {
         if (this.vaccinationStageValue !== "") {

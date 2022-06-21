@@ -13,7 +13,7 @@
               { text: 'ახლა მაქვს', value: 'have_right_now' },
             ]"
             :selected-value="hadCovidValue"
-            :update-value="updateHadCovidValue"
+            update-value="updateHadCovid"
           />
 
           <input-radio
@@ -25,7 +25,7 @@
               { text: 'არა', value: 'no' },
             ]"
             :selected-value="hadAntibodyTestValue"
-            :update-value="updateHadAntibodyTestValue"
+            update-value="updateHadAntibodyTest"
           />
 
           <basic-input
@@ -35,7 +35,7 @@
             name="had_covid_date"
             placeholder="დდ/თთ/წწ"
             :value="whenCovidValue"
-            :update-value="updateWhenCovidValue"
+            update-value="updateWhenCovid"
             error-msg=""
           />
 
@@ -45,7 +45,7 @@
             type="date"
             name="had_covid_date"
             :value="antibodiesValue.covid_date"
-            :update-value="updateAntibodiesCovidDateValue"
+            update-value="updateAntibodies"
             error-msg=""
           />
           <basic-input
@@ -55,7 +55,7 @@
             name="had_covid_date"
             placeholder="ანტისხეულების რაოდენობა"
             :value="antibodiesValue.number"
-            :update-value="updateAntibodiesNumberValue"
+            update-value="updateAntibodiesNumber"
             error-msg=""
           />
         </form>
@@ -92,43 +92,22 @@ export default {
   },
   computed: {
     hadCovidValue() {
-      return this.$store.getters.hadCovid;
+      return this.$store.state.CovidState.had_covid;
     },
     hadAntibodyTestValue() {
-      return this.$store.getters.hadAntibodyTest;
+      return this.$store.state.CovidState.had_antibody_test;
     },
     whenCovidValue() {
-      return this.$store.getters.covidDate;
+      return this.$store.state.CovidState.covid_date;
     },
     antibodiesValue() {
-      return this.$store.getters.antibodies;
+      return this.$store.state.CovidState.antibodies;
     },
     covidStateIsValid() {
-      return this.$store.getters.covidStateIsValid;
+      return this.$store.state.CovidState.covid_state_is_valid;
     },
   },
   methods: {
-    updateHadCovidValue(e) {
-      this.$store.commit("updateHadCovid", e.target.value);
-      this.validateForm();
-    },
-    updateHadAntibodyTestValue(e) {
-      this.$store.commit("updateHadAntibodyTest", e.target.value);
-      this.validateForm();
-    },
-    updateWhenCovidValue(e) {
-      this.$store.commit("updateCovidDate", e.target.value);
-      this.validateForm();
-    },
-    updateAntibodiesCovidDateValue(e) {
-      this.$store.commit("updateAntibodies", e.target.value);
-      this.validateForm();
-    },
-    updateAntibodiesNumberValue(e) {
-      this.$store.commit("updateAntibodiesNumber", e.target.value);
-      this.validateForm();
-    },
-
     validateForm() {
       if (
         this.hadCovidValue === "no" ||

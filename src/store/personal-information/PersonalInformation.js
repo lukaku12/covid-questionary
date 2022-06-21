@@ -8,18 +8,6 @@ export default {
     };
   },
   getters: {
-    firstName(state) {
-      return state.first_name;
-    },
-    lastName(state) {
-      return state.last_name;
-    },
-    email(state) {
-      return state.email;
-    },
-    personalInfoIsValid(state) {
-      return state.personal_info_is_valid;
-    },
   },
   mutations: {
     updateFirstName(state, payload) {
