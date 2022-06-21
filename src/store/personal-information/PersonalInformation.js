@@ -1,6 +1,5 @@
 export default {
   state() {
-    //page1
     return {
       first_name: "",
       last_name: "",
