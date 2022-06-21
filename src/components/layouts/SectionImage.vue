@@ -6,36 +6,19 @@
       alt="boy-and-girl"
     />
     <img
-      v-if="animationClass === 'rectangle'"
       class="-z-10"
       :class="animationClass"
-      src="@/assets/images/rectangle.png"
-      :alt="animationClass"
-    />
-    <img
-      v-if="animationClass === 'red-ball'"
-      class="-z-10"
-      :class="animationClass"
-      src="@/assets/images/red-ball.png"
-      :alt="animationClass"
-    />
-    <img
-      v-if="animationClass === 'star'"
-      class="-z-10"
-      :class="animationClass"
-      src="@/assets/images/star.png"
-      :alt="animationClass"
-    />
-    <img
-      v-if="animationClass === 'heart'"
-      class="-z-10"
-      :class="animationClass"
-      src="@/assets/images/heart.png"
+      :src="imagePath"
       :alt="animationClass"
     />
   </div>
 </template>
+
 <script>
+import rectangle from "@/assets/images/rectangle.png";
+import circle from "@/assets/images/red-ball.png";
+import star from "@/assets/images/star.png";
+import heard from "@/assets/images/heart.png";
 export default {
   name: "SectionImage",
   props: {
@@ -44,9 +27,29 @@ export default {
       required: true,
     },
   },
+  data() {
+    return {
+      rectangle: rectangle,
+      circle: circle,
+      star: star,
+      heard: heard,
+    };
+  },
   computed: {
     animationClass() {
       return this.$route.matched[0].props.default.myClass;
+    },
+    imagePath() {
+      if (this.animationClass === "rectangle") {
+        return this.rectangle;
+      } else if (this.animationClass === "red-ball") {
+        return this.circle;
+      } else if (this.animationClass === "star") {
+        return this.star;
+      } else if (this.animationClass === "heart") {
+        return this.heard;
+      }
+      return 0;
     },
   },
 };
