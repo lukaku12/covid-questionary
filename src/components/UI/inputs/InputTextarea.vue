@@ -1,5 +1,6 @@
 <template>
   <div class="flex flex-col mb-12 max-w-lg appearAnimation">
+    <!-- eslint-disable-next-line vue/no-v-html -->
     <label for="date" class="font-bold text-xl mb-2" v-html="question"></label>
     <textarea
       :name="name"
