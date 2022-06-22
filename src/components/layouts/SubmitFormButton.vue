@@ -16,6 +16,7 @@
 
 <script>
 import axios from "axios";
+import { mapState } from "vuex";
 
 export default {
   name: "SubmitFormButton",
@@ -25,9 +26,9 @@ export default {
     };
   },
   computed: {
-    covidPoliticIsValidValue() {
-      return this.$store.getters.covidPoliticIsValid;
-    },
+    ...mapState({
+      covidPoliticIsValid: (state) => state.CovidPolitic.covidPoliticIsValid,
+    }),
   },
   methods: {
     submitForm() {
