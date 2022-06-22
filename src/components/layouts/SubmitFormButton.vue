@@ -4,10 +4,10 @@
     type="button"
     class="bg-[#208298] py-3 px-6 rounded-3xl absolute right-2 text-white font-bold"
     :class="
-      !covidPoliticIsValidValue &&
+      !covidPoliticIsValid &&
       'opacity-40 cursor-not-allowed ease-in duration-300'
     "
-    :disabled="!covidPoliticIsValidValue"
+    :disabled="!covidPoliticIsValid"
     @click="submitForm"
   >
     დასრულება
@@ -27,7 +27,7 @@ export default {
   },
   computed: {
     ...mapState({
-      covidPoliticIsValid: (state) => state.CovidPolitic.covidPoliticIsValid,
+      covidPoliticIsValid: (state) => state.CovidPolitic.covid_politic_is_valid,
     }),
   },
   methods: {

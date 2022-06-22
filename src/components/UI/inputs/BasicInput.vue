@@ -56,10 +56,16 @@ export default {
       required: false,
       default: "",
     },
+    validate: {
+      type: Function,
+      required: false,
+      default: () => true,
+    },
   },
   methods: {
     updateInputValue(e) {
       this.$store.commit(this.vuexPropertyName, e.target.value);
+      this.validate();
     },
   },
 };

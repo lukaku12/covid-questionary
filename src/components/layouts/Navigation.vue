@@ -39,16 +39,17 @@ export default {
     goToNextPageIfInputsAreValid() {
       let formISValid = false;
       if (this.currentPage === "1") {
-        formISValid = this.$store.getters.personalInfoIsValid;
+        formISValid =
+          this.$store.state.PersonalInformation.personal_info_is_valid;
       }
       if (this.currentPage === "2") {
-        formISValid = this.$store.getters.covidStateIsValid;
+        formISValid = this.$store.state.CovidState.covid_state_is_valid;
       }
       if (this.currentPage === "3") {
-        formISValid = this.$store.getters.vaccineStateIsValid;
+        formISValid = this.$store.state.AreYouVaccinated.vaccine_state_is_valid;
       }
       if (this.currentPage === "4") {
-        formISValid = this.$store.getters.covidPoliticIsValid;
+        formISValid = this.$store.state.CovidPolitic.covid_politic_is_valid;
       }
       return formISValid;
     },

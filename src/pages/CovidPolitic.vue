@@ -28,6 +28,7 @@
             ]"
             :selected-value="nonFormalMeetingsValue"
             vuex-property-name="updateNonFormalMeetings"
+            :validate="validateForm"
           />
 
           <input-radio
@@ -43,6 +44,7 @@
             ]"
             :selected-value="numberOfDaysFromOfficeValue"
             vuex-property-name="updateNumberOfDaysFromOffice"
+            :validate="validateForm"
           />
 
           <input-textarea

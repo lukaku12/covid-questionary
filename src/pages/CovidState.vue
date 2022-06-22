@@ -14,6 +14,7 @@
             ]"
             :selected-value="hadCovidValue"
             vuex-property-name="updateHadCovid"
+            :validate="validateForm"
           />
 
           <div v-if="hadCovidValue === 'yes'">
@@ -26,6 +27,7 @@
               ]"
               :selected-value="hadAntibodyTestValue"
               vuex-property-name="updateHadAntibodyTest"
+              :validate="validateForm"
             />
 
             <div v-if="hadAntibodyTestValue === 'yes'">
@@ -35,7 +37,7 @@
                 name="had_covid_date"
                 :value="antibodiesValue.covid_date"
                 vuex-property-name="updateAntibodies"
-                error-msg=""
+                :validate="validateForm"
               />
               <basic-input
                 question=""
@@ -44,7 +46,7 @@
                 placeholder="ანტისხეულების რაოდენობა"
                 :value="antibodiesValue.number"
                 vuex-property-name="updateAntibodiesNumber"
-                error-msg=""
+                :validate="validateForm"
               />
             </div>
             <basic-input
@@ -55,7 +57,7 @@
               placeholder="დდ/თთ/წწ"
               :value="whenCovidValue"
               vuex-property-name="updateWhenCovid"
-              error-msg=""
+              :validate="validateForm"
             />
           </div>
         </form>

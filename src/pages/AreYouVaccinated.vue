@@ -13,6 +13,7 @@
             ]"
             :selected-value="hadVaccineValue"
             vuex-property-name="updateHadVaccine"
+            :validate="validateForm"
           />
           <div v-if="hadVaccineValue === 'no'">
             <input-radio
@@ -31,6 +32,7 @@
               ]"
               :selected-value="whatAreYouWaitingValue"
               vuex-property-name="updateWhatAreYouWaiting"
+              :validate="validateForm"
             />
             <small-footer
               v-if="
@@ -69,6 +71,7 @@
               ]"
               :selected-value="vaccinationStageValue"
               vuex-property-name="updateVaccinationStage"
+              :validate="validateForm"
             />
             <small-footer
               v-if="

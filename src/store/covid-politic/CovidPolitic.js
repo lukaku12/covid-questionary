@@ -5,7 +5,7 @@ export default {
       number_of_days_from_office: "",
       what_about_meetings_in_live: "",
       tell_us_your_opinion_about_us: "",
-      covidPoliticIsValid: false,
+      covid_politic_is_valid: false,
     };
   },
   getters: {
@@ -40,7 +40,7 @@ export default {
       state.tell_us_your_opinion_about_us = payload;
     },
     updateCovidPoliticIsValid(state, payload) {
-      state.covidPoliticIsValid = payload;
+      state.covid_politic_is_valid = payload;
     },
   },
 };
