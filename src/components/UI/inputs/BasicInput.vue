@@ -27,7 +27,7 @@ export default {
     question: {
       type: String,
       required: false,
-      default: '',
+      default: "",
     },
     type: {
       type: String,
@@ -45,22 +45,22 @@ export default {
     placeholder: {
       type: String,
       required: false,
-      default: '',
+      default: "",
     },
-    updateValue: {
+    updateVuex: {
       type: String,
       required: true,
     },
     rules: {
       type: String,
       required: false,
-      default: '',
+      default: "",
     },
   },
   methods: {
-    updateInputValue (e) {
-      this.$store.commit(this.updateValue, e.target.value);
-    }
+    updateInputValue(e) {
+      this.$store.commit(this.updateVuex, e.target.value);
+    },
   },
 };
 </script>

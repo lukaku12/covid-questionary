@@ -12,7 +12,7 @@
               { text: 'არა', value: 'no' },
             ]"
             :selected-value="hadVaccineValue"
-            update-value="updateHadVaccine"
+            update-vuex="updateHadVaccine"
           />
           <div v-if="hadVaccineValue === 'no'">
             <input-radio
@@ -30,7 +30,7 @@
                 },
               ]"
               :selected-value="whatAreYouWaitingValue"
-              update-value="updateWhatAreYouWaiting"
+              update-vuex="updateWhatAreYouWaiting"
             />
             <small-footer
               v-if="
@@ -68,7 +68,7 @@
                 },
               ]"
               :selected-value="vaccinationStageValue"
-              update-value="updateVaccinationStage"
+              update-vuex="updateVaccinationStage"
             />
             <small-footer
               v-if="

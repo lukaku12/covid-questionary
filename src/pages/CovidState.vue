@@ -13,7 +13,7 @@
               { text: 'ახლა მაქვს', value: 'have_right_now' },
             ]"
             :selected-value="hadCovidValue"
-            update-value="updateHadCovid"
+            update-vuex="updateHadCovid"
           />
 
           <div v-if="hadCovidValue === 'yes'">
@@ -25,7 +25,7 @@
                 { text: 'არა', value: 'no' },
               ]"
               :selected-value="hadAntibodyTestValue"
-              update-value="updateHadAntibodyTest"
+              update-vuex="updateHadAntibodyTest"
             />
 
             <div v-if="hadAntibodyTestValue === 'yes'">
@@ -34,7 +34,7 @@
                 type="date"
                 name="had_covid_date"
                 :value="antibodiesValue.covid_date"
-                update-value="updateAntibodies"
+                update-vuex="updateAntibodies"
                 error-msg=""
               />
               <basic-input
@@ -43,7 +43,7 @@
                 name="had_covid_date"
                 placeholder="ანტისხეულების რაოდენობა"
                 :value="antibodiesValue.number"
-                update-value="updateAntibodiesNumber"
+                update-vuex="updateAntibodiesNumber"
                 error-msg=""
               />
             </div>
@@ -54,7 +54,7 @@
               name="had_covid_date"
               placeholder="დდ/თთ/წწ"
               :value="whenCovidValue"
-              update-value="updateWhenCovid"
+              update-vuex="updateWhenCovid"
               error-msg=""
             />
           </div>

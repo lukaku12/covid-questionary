@@ -27,14 +27,14 @@ export default {
       type: String,
       required: true,
     },
-    updateValue: {
+    updateVuex: {
       type: String,
       required: true,
     },
   },
   methods: {
     updateInputValue(e) {
-      this.$store.commit(this.updateValue, e.target.value);
+      this.$store.commit(this.updateVuex, e.target.value);
     },
   },
 };
