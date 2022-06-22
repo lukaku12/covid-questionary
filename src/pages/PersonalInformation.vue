@@ -29,7 +29,7 @@
             placeholder="fbi@redberry.ge"
             :value="emailValue"
             update-value="updateEmail"
-            rules="required|min:3|max:255|email|redberry-email"
+            rules="required|min:3|max:255|email|redberry_email"
           />
         </Form>
         <small-footer text="*-ით მონიშნული ველების შევსება სავალდებულოა" />

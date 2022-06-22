@@ -6,7 +6,7 @@ defineRule('email', email);
 defineRule('min', min);
 defineRule('max', max);
 
-defineRule("redberry-email", (value, _, name) => {
+defineRule("redberry_email", (value, _, name) => {
   const reg =
     /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@redberry.ge$/;
   if (!value || !value.length) {
