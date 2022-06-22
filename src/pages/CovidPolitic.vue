@@ -27,7 +27,7 @@
               { text: 'თვეში ერთხელ', value: 'once_in_a_month' },
             ]"
             :selected-value="nonFormalMeetingsValue"
-            update-vuex="updateNonFormalMeetings"
+            vuex-property-name="updateNonFormalMeetings"
           />
 
           <input-radio
@@ -42,21 +42,21 @@
               { text: 5, value: '5' },
             ]"
             :selected-value="numberOfDaysFromOfficeValue"
-            update-vuex="updateNumberOfDaysFromOffice"
+            vuex-property-name="updateNumberOfDaysFromOffice"
           />
 
           <input-textarea
             question="რას ფიქრობ ფიზიკურ შეკრებებზე?"
             name="gatherings"
             :value="whatAboutMeetingsInLiveValue"
-            update-vuex="updateWhatAboutMeetingsInLive"
+            vuex-property-name="updateWhatAboutMeetingsInLive"
           />
 
           <input-textarea
             question="რას ფიქრობ არსებულ გარემოზე:<br />რა მოგწონს, რას დაამატებდი, რას შეცვლიდი?"
             name="environment"
             :value="tellUsYourOpinionAboutUsValue"
-            update-vuex="updateTellUsYourOpinionAboutUs"
+            vuex-property-name="updateTellUsYourOpinionAboutUs"
           />
           <SubmitFormButton></SubmitFormButton>
         </form>

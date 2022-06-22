@@ -27,14 +27,14 @@ export default {
       type: String,
       required: true,
     },
-    updateVuex: {
+    vuexPropertyName: {
       type: String,
       required: true,
     },
   },
   methods: {
     updateInputValue(e) {
-      this.$store.commit(this.updateVuex, e.target.value);
+      this.$store.commit(this.vuexPropertyName, e.target.value);
     },
   },
 };

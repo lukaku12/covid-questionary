@@ -47,7 +47,7 @@ export default {
       required: false,
       default: "",
     },
-    updateVuex: {
+    vuexPropertyName: {
       type: String,
       required: true,
     },
@@ -59,7 +59,7 @@ export default {
   },
   methods: {
     updateInputValue(e) {
-      this.$store.commit(this.updateVuex, e.target.value);
+      this.$store.commit(this.vuexPropertyName, e.target.value);
     },
   },
 };
