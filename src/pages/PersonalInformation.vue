@@ -1,42 +1,49 @@
 <template>
   <Layout>
-    <CommonHeader page="1" />
-    <div class="flex justify-between font-helvetica w-full md:h-[70vh]">
-      <div class="w-full md:w-1/2 md:mt-10">
-        <Form class="w-full text-center md:text-left">
-          <basic-input
-            question="სახელი*"
-            type="text"
-            name="name"
-            placeholder="იოსებ"
-            :value="nameValue"
-            vuex-mutation="updateFirstName"
-            rules="required|min:3|max:255"
-          />
-          <basic-input
-            question="გვარი*"
-            type="text"
-            name="lastname"
-            placeholder="ჯუღაშვილი"
-            :value="lastNameValue"
-            vuex-mutation="updateLastName"
-            rules="required|min:3|max:255"
-          />
-          <basic-input
-            question="მეილი*"
-            type="email"
-            name="email"
-            placeholder="fbi@redberry.ge"
-            :value="emailValue"
-            vuex-mutation="updateEmail"
-            rules="required|min:3|max:255|email|redberry_email"
-          />
-        </Form>
-        <small-footer text="*-ით მონიშნული ველების შევსება სავალდებულოა" />
+    <Form v-slot="{ meta }" as="div">
+      <CommonHeader page="1" />
+      <div class="flex justify-between font-helvetica w-full md:h-[70vh]">
+        <div class="w-full md:w-1/2 md:mt-10">
+          <form class="w-full text-center md:text-left">
+            <basic-input
+              question="სახელი*"
+              type="text"
+              name="name"
+              placeholder="იოსებ"
+              :value="nameValue"
+              vuex-mutation="updateFirstName"
+              rules="required|min:3|max:255"
+            />
+            <basic-input
+              question="გვარი*"
+              type="text"
+              name="lastname"
+              placeholder="ჯუღაშვილი"
+              :value="lastNameValue"
+              vuex-mutation="updateLastName"
+              rules="required|min:3|max:255"
+            />
+            <basic-input
+              question="მეილი*"
+              type="email"
+              name="email"
+              placeholder="fbi@redberry.ge"
+              :value="emailValue"
+              vuex-mutation="updateEmail"
+              rules="required|min:3|max:255|email|redberry_email"
+            />
+          </form>
+          <small-footer text="*-ით მონიშნული ველების შევსება სავალდებულოა" />
+        </div>
+        <section-image :image="image"></section-image>
       </div>
-      <section-image :image="image"></section-image>
-    </div>
-    <Navigation prev-page="start-question" next-page="question2"></Navigation>
+      <Navigation
+        prev-page="start-question"
+        next-page="question2"
+        :personal-info-is-valid="meta.valid"
+      >
+      </Navigation>
+    </Form>
   </Layout>
 </template>
 

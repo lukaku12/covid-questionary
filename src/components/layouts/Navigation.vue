@@ -31,6 +31,10 @@ export default {
       type: String,
       required: true,
     },
+    personalInfoIsValid: {
+      type: Boolean,
+      default: true,
+    },
   },
   computed: {
     currentPage() {
@@ -39,8 +43,7 @@ export default {
     goToNextPageIfInputsAreValid() {
       let formISValid = false;
       if (this.currentPage === "1") {
-        formISValid =
-          this.$store.state.PersonalInformation.personal_info_is_valid;
+        formISValid = this.personalInfoIsValid;
       }
       if (this.currentPage === "2") {
         formISValid = this.$store.state.CovidState.covid_state_is_valid;
