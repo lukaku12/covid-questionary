@@ -1,70 +1,74 @@
 <template>
   <Layout>
-    <CommonHeader page="2" />
-    <div class="flex justify-between font-helvetica w-full md:h-[70vh]">
-      <div class="w-full md:w-1/2 md:mt-10 overflow-auto">
-        <form class="w-full text-center md:text-left">
-          <input-radio
-            question="გაქვს გადატანილი Covid-19?*"
-            name="had_covid"
-            :options="[
-              { text: 'კი', value: 'yes' },
-              { text: 'არა', value: 'no' },
-              { text: 'ახლა მაქვს', value: 'have_right_now' },
-            ]"
-            :selected-value="hadCovidValue"
-            vuex-mutation="updateHadCovid"
-            :validate="validateForm"
-          />
-
-          <div v-if="hadCovidValue === 'yes'">
+    <Form v-slot="{meta}" as="div">
+      <CommonHeader page="2" />
+      <div class="flex justify-between font-helvetica w-full md:h-[70vh]">
+        <div class="w-full md:w-1/2 md:mt-10 overflow-auto">
+          <form class="w-full text-center md:text-left">
             <input-radio
-              question="ანტისხეულების ტესტი გაქვს გაკეთებული?*"
-              name="antibodies_test"
+              question="გაქვს გადატანილი Covid-19?*"
+              name="had_covid"
               :options="[
                 { text: 'კი', value: 'yes' },
                 { text: 'არა', value: 'no' },
+                { text: 'ახლა მაქვს', value: 'have_right_now' },
               ]"
-              :selected-value="hadAntibodyTestValue"
-              vuex-mutation="updateHadAntibodyTest"
-              :validate="validateForm"
+              :selected-value="hadCovidValue"
+              vuex-mutation="updateHadCovid"
             />
 
-            <div v-if="hadAntibodyTestValue === 'yes'">
+            <div v-if="hadCovidValue === 'yes'">
+              <input-radio
+                question="ანტისხეულების ტესტი გაქვს გაკეთებული?*"
+                name="antibodies_test"
+                :options="[
+                  { text: 'კი', value: 'yes' },
+                  { text: 'არა', value: 'no' },
+                ]"
+                :selected-value="hadAntibodyTestValue"
+                vuex-mutation="updateHadAntibodyTest"
+              />
+
+              <div v-if="hadAntibodyTestValue === 'yes'">
+                <basic-input
+                  question="თუ გახსოვს, გთხოვ მიუთითე ტესტის მიახლოებითი რიცხვი და ანტისხეულების რაოდენობა*"
+                  type="date"
+                  name="had_covid_date"
+                  :value="antibodiesValue.covid_date"
+                  vuex-mutation="updateAntibodies"
+                  rules="required"
+                />
+                <basic-input
+                  question=""
+                  type="number"
+                  name="had_covid_date"
+                  placeholder="ანტისხეულების რაოდენობა"
+                  :value="antibodiesValue.number"
+                  vuex-mutation="updateAntibodiesNumber"
+                  rules="required"
+                />
+              </div>
               <basic-input
-                question="თუ გახსოვს, გთხოვ მიუთითე ტესტის მიახლოებითი რიცხვი და ანტისხეულების რაოდენობა*"
+                v-if="hadAntibodyTestValue === 'no'"
+                question="მიუთითე მიახლოებითი პერიოდი (დღე/თვე/წელი) როდის გქონდა Covid-19*"
                 type="date"
                 name="had_covid_date"
-                :value="antibodiesValue.covid_date"
-                vuex-mutation="updateAntibodies"
-                :validate="validateForm"
-              />
-              <basic-input
-                question=""
-                type="number"
-                name="had_covid_date"
-                placeholder="ანტისხეულების რაოდენობა"
-                :value="antibodiesValue.number"
-                vuex-mutation="updateAntibodiesNumber"
-                :validate="validateForm"
+                placeholder="დდ/თთ/წწ"
+                :value="whenCovidValue"
+                vuex-mutation="updateWhenCovid"
+                rules="required"
               />
             </div>
-            <basic-input
-              v-if="hadAntibodyTestValue === 'no'"
-              question="მიუთითე მიახლოებითი პერიოდი (დღე/თვე/წელი) როდის გქონდა Covid-19*"
-              type="date"
-              name="had_covid_date"
-              placeholder="დდ/თთ/წწ"
-              :value="whenCovidValue"
-              vuex-mutation="updateWhenCovid"
-              :validate="validateForm"
-            />
-          </div>
-        </form>
+          </form>
+        </div>
+        <section-image :image="vaccine"></section-image>
       </div>
-      <section-image :image="vaccine"></section-image>
-    </div>
-    <Navigation prev-page="question1" next-page="question3"></Navigation>
+      <Navigation
+        prev-page="question1"
+        next-page="question3"
+        :form-is-valid="meta.valid"
+      ></Navigation>
+    </Form>
   </Layout>
 </template>
 
@@ -77,6 +81,7 @@ import Navigation from "@/components/layouts/Navigation";
 import SectionImage from "@/components/layouts/SectionImage";
 import vaccine from "@/assets/images/scan-vaccinate.png";
 import { mapState } from "vuex";
+import { Form } from "vee-validate";
 
 export default {
   name: "CovidState",
@@ -87,10 +92,11 @@ export default {
     BasicInput,
     Navigation,
     SectionImage,
+    Form
   },
   data() {
     return {
-      vaccine: vaccine,
+      vaccine: vaccine
     };
   },
   computed: {
@@ -98,43 +104,42 @@ export default {
       hadCovidValue: (state) => state.CovidState.had_covid,
       hadAntibodyTestValue: (state) => state.CovidState.had_antibody_test,
       whenCovidValue: (state) => state.CovidState.covid_date,
-      antibodiesValue: (state) => state.CovidState.antibodies,
-      covidStateIsValid: (state) => state.CovidState.covid_state_is_valid,
-    }),
-  },
-  methods: {
-    validateForm() {
-      if (
-        this.hadCovidValue === "no" ||
-        this.hadCovidValue === "have_right_now"
-      ) {
-        this.$store.commit("updateCovidStateIsValid", true);
-      }
-      if (this.hadCovidValue === "yes") {
-        this.$store.commit("updateCovidStateIsValid", false);
-
-        if (this.hadAntibodyTestValue === "yes") {
-          if (
-            this.antibodiesValue.covid_date === "" &&
-            this.antibodiesValue.number === ""
-          ) {
-            this.$store.commit("updateCovidStateIsValid", false);
-          } else if (
-            this.antibodiesValue.covid_date !== "" &&
-            this.antibodiesValue.number !== ""
-          ) {
-            this.$store.commit("updateCovidStateIsValid", true);
-          }
-        }
-        if (this.hadAntibodyTestValue === "no") {
-          if (this.whenCovidValue === "") {
-            this.$store.commit("updateCovidStateIsValid", false);
-          } else {
-            this.$store.commit("updateCovidStateIsValid", true);
-          }
-        }
-      }
-    },
-  },
+      antibodiesValue: (state) => state.CovidState.antibodies
+    })
+  }
+  // methods: {
+  //   validateForm() {
+  //     if (
+  //       this.hadCovidValue === "no" ||
+  //       this.hadCovidValue === "have_right_now"
+  //     ) {
+  //       this.$store.commit("updateCovidStateIsValid", true);
+  //     }
+  //     if (this.hadCovidValue === "yes") {
+  //       this.$store.commit("updateCovidStateIsValid", false);
+  //
+  //       if (this.hadAntibodyTestValue === "yes") {
+  //         if (
+  //           this.antibodiesValue.covid_date === "" &&
+  //           this.antibodiesValue.number === ""
+  //         ) {
+  //           this.$store.commit("updateCovidStateIsValid", false);
+  //         } else if (
+  //           this.antibodiesValue.covid_date !== "" &&
+  //           this.antibodiesValue.number !== ""
+  //         ) {
+  //           this.$store.commit("updateCovidStateIsValid", true);
+  //         }
+  //       }
+  //       if (this.hadAntibodyTestValue === "no") {
+  //         if (this.whenCovidValue === "") {
+  //           this.$store.commit("updateCovidStateIsValid", false);
+  //         } else {
+  //           this.$store.commit("updateCovidStateIsValid", true);
+  //         }
+  //       }
+  //     }
+  //   },
+  // },
 };
 </script>

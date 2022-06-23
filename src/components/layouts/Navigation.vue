@@ -8,8 +8,7 @@
     <button
       v-if="currentPage !== '4'"
       :class="
-        !goToNextPageIfInputsAreValid &&
-        'opacity-40 pointer-events-none ease-in duration-300'
+        !formIsValid && 'opacity-40 pointer-events-none ease-in duration-300'
       "
     >
       <router-link :to="{ name: nextPage }">
@@ -31,30 +30,14 @@ export default {
       type: String,
       required: true,
     },
-    personalInfoIsValid: {
+    formIsValid: {
       type: Boolean,
-      default: true,
+      required: true,
     },
   },
   computed: {
     currentPage() {
       return this.$route.path.replace("/questionary/", "");
-    },
-    goToNextPageIfInputsAreValid() {
-      let formISValid = false;
-      if (this.currentPage === "1") {
-        formISValid = this.personalInfoIsValid;
-      }
-      if (this.currentPage === "2") {
-        formISValid = this.$store.state.CovidState.covid_state_is_valid;
-      }
-      if (this.currentPage === "3") {
-        formISValid = this.$store.state.AreYouVaccinated.vaccine_state_is_valid;
-      }
-      if (this.currentPage === "4") {
-        formISValid = this.$store.state.CovidPolitic.covid_politic_is_valid;
-      }
-      return formISValid;
     },
   },
 };

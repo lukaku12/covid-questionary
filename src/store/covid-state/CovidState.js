@@ -8,7 +8,6 @@ export default {
         covid_date: "",
         number: "",
       },
-      covid_state_is_valid: false,
     };
   },
   getters: {
@@ -45,9 +44,6 @@ export default {
     },
     updateAntibodiesNumber(state, payload) {
       state.antibodies.number = payload;
-    },
-    updateCovidStateIsValid(state, payload) {
-      state.covid_state_is_valid = payload;
     },
   },
 };

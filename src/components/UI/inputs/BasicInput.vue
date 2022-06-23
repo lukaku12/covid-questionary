@@ -53,19 +53,12 @@ export default {
     },
     rules: {
       type: String,
-      required: false,
-      default: "",
-    },
-    validate: {
-      type: Function,
-      required: false,
-      default: () => true,
+      required: true,
     },
   },
   methods: {
     updateInputValue(e) {
       this.$store.commit(this.vuexMutation, e.target.value);
-      this.validate();
     },
   },
 };
