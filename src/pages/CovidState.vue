@@ -13,7 +13,7 @@
               { text: 'ახლა მაქვს', value: 'have_right_now' },
             ]"
             :selected-value="hadCovidValue"
-            vuex-property-name="updateHadCovid"
+            vuex-mutation="updateHadCovid"
             :validate="validateForm"
           />
 
@@ -26,7 +26,7 @@
                 { text: 'არა', value: 'no' },
               ]"
               :selected-value="hadAntibodyTestValue"
-              vuex-property-name="updateHadAntibodyTest"
+              vuex-mutation="updateHadAntibodyTest"
               :validate="validateForm"
             />
 
@@ -36,7 +36,7 @@
                 type="date"
                 name="had_covid_date"
                 :value="antibodiesValue.covid_date"
-                vuex-property-name="updateAntibodies"
+                vuex-mutation="updateAntibodies"
                 :validate="validateForm"
               />
               <basic-input
@@ -45,7 +45,7 @@
                 name="had_covid_date"
                 placeholder="ანტისხეულების რაოდენობა"
                 :value="antibodiesValue.number"
-                vuex-property-name="updateAntibodiesNumber"
+                vuex-mutation="updateAntibodiesNumber"
                 :validate="validateForm"
               />
             </div>
@@ -56,7 +56,7 @@
               name="had_covid_date"
               placeholder="დდ/თთ/წწ"
               :value="whenCovidValue"
-              vuex-property-name="updateWhenCovid"
+              vuex-mutation="updateWhenCovid"
               :validate="validateForm"
             />
           </div>

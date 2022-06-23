@@ -12,7 +12,7 @@
               { text: 'არა', value: 'no' },
             ]"
             :selected-value="hadVaccineValue"
-            vuex-property-name="updateHadVaccine"
+            vuex-mutation="updateHadVaccine"
             :validate="validateForm"
           />
           <div v-if="hadVaccineValue === 'no'">
@@ -31,7 +31,7 @@
                 },
               ]"
               :selected-value="whatAreYouWaitingValue"
-              vuex-property-name="updateWhatAreYouWaiting"
+              vuex-mutation="updateWhatAreYouWaiting"
               :validate="validateForm"
             />
             <small-footer
@@ -70,7 +70,7 @@
                 },
               ]"
               :selected-value="vaccinationStageValue"
-              vuex-property-name="updateVaccinationStage"
+              vuex-mutation="updateVaccinationStage"
               :validate="validateForm"
             />
             <small-footer

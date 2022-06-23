@@ -27,7 +27,7 @@
               { text: 'თვეში ერთხელ', value: 'once_in_a_month' },
             ]"
             :selected-value="nonFormalMeetingsValue"
-            vuex-property-name="updateNonFormalMeetings"
+            vuex-mutation="updateNonFormalMeetings"
             :validate="validateForm"
           />
 
@@ -43,7 +43,7 @@
               { text: 5, value: '5' },
             ]"
             :selected-value="numberOfDaysFromOfficeValue"
-            vuex-property-name="updateNumberOfDaysFromOffice"
+            vuex-mutation="updateNumberOfDaysFromOffice"
             :validate="validateForm"
           />
 
@@ -51,14 +51,14 @@
             question="რას ფიქრობ ფიზიკურ შეკრებებზე?"
             name="gatherings"
             :value="whatAboutMeetingsInLiveValue"
-            vuex-property-name="updateWhatAboutMeetingsInLive"
+            vuex-mutation="updateWhatAboutMeetingsInLive"
           />
 
           <input-textarea
             question="რას ფიქრობ არსებულ გარემოზე:<br />რა მოგწონს, რას დაამატებდი, რას შეცვლიდი?"
             name="environment"
             :value="tellUsYourOpinionAboutUsValue"
-            vuex-property-name="updateTellUsYourOpinionAboutUs"
+            vuex-mutation="updateTellUsYourOpinionAboutUs"
           />
           <SubmitFormButton></SubmitFormButton>
         </form>

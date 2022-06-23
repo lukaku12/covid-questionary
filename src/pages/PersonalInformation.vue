@@ -10,7 +10,7 @@
             name="name"
             placeholder="იოსებ"
             :value="nameValue"
-            vuex-property-name="updateFirstName"
+            vuex-mutation="updateFirstName"
             rules="required|min:3|max:255"
           />
           <basic-input
@@ -19,7 +19,7 @@
             name="lastname"
             placeholder="ჯუღაშვილი"
             :value="lastNameValue"
-            vuex-property-name="updateLastName"
+            vuex-mutation="updateLastName"
             rules="required|min:3|max:255"
           />
           <basic-input
@@ -28,7 +28,7 @@
             name="email"
             placeholder="fbi@redberry.ge"
             :value="emailValue"
-            vuex-property-name="updateEmail"
+            vuex-mutation="updateEmail"
             rules="required|min:3|max:255|email|redberry_email"
           />
         </Form>
